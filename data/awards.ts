@@ -125,6 +125,12 @@ export const awards: Award[] = [
     body: "Republic of Korea Navy",
     level: "graduate",
   },
+  {
+    year: "2020",
+    title: "Excellence Award, POSTECH Business Idea Contest",
+    body: "POSTECH",
+    level: "graduate",
+  },
 
   // Undergraduate (2015–2020)
   {
@@ -133,12 +139,6 @@ export const awards: Award[] = [
     body: "POSTECH (highest graduation honor)",
     level: "undergraduate",
     highlight: true,
-  },
-  {
-    year: "2020",
-    title: "Excellence Award, POSTECH Business Idea Contest",
-    body: "POSTECH",
-    level: "undergraduate",
   },
   {
     year: "2019",

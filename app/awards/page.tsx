@@ -80,7 +80,11 @@ export default function AwardsPage() {
           {graduate.map((a, i) => (
             <li
               key={i}
-              className="grid gap-1 border-b border-border pb-4 last:border-b-0 md:grid-cols-[48px_120px_1fr] md:gap-4"
+              className={cn(
+                "grid gap-1 border-b border-border pb-4 last:border-b-0 md:grid-cols-[48px_120px_1fr] md:gap-4",
+                a.highlight &&
+                  "relative overflow-hidden rounded-2xl border border-brand-primary/40 bg-brand-primary/[0.06] p-4 md:p-5 last:border-b last:border-brand-primary/40 before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:bg-brand-primary",
+              )}
             >
               <span className="font-mono text-xs text-muted-foreground md:text-sm">
                 #{i + 1}
@@ -92,8 +96,8 @@ export default function AwardsPage() {
                 <p className="font-heading text-base font-semibold text-foreground">
                   {a.title}
                   {a.highlight && (
-                    <span className="ml-2 inline-flex items-center rounded-full bg-brand-primary/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-brand-primary">
-                      Highlight
+                    <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-brand-primary/15 px-2 py-0.5 align-middle text-[10px] font-medium uppercase tracking-wide text-brand-primary">
+                      <Star className="h-3 w-3 fill-current" /> Featured
                     </span>
                   )}
                 </p>
@@ -117,7 +121,11 @@ export default function AwardsPage() {
           {undergraduate.map((a, i) => (
             <li
               key={i}
-              className="grid gap-1 border-b border-border pb-4 last:border-b-0 md:grid-cols-[48px_120px_1fr] md:gap-4"
+              className={cn(
+                "grid gap-1 border-b border-border pb-4 last:border-b-0 md:grid-cols-[48px_120px_1fr] md:gap-4",
+                a.highlight &&
+                  "relative overflow-hidden rounded-2xl border border-brand-primary/40 bg-brand-primary/[0.06] p-4 md:p-5 last:border-b last:border-brand-primary/40 before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:bg-brand-primary",
+              )}
             >
               <span className="font-mono text-xs text-muted-foreground md:text-sm">
                 #{graduate.length + i + 1}
@@ -128,6 +136,11 @@ export default function AwardsPage() {
               <div>
                 <p className="font-heading text-base font-semibold text-foreground">
                   {a.title}
+                  {a.highlight && (
+                    <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-brand-primary/15 px-2 py-0.5 align-middle text-[10px] font-medium uppercase tracking-wide text-brand-primary">
+                      <Star className="h-3 w-3 fill-current" /> Featured
+                    </span>
+                  )}
                 </p>
                 {a.body && (
                   <p className="mt-1 text-sm text-muted-foreground">{a.body}</p>
