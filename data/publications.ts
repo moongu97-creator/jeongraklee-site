@@ -36,7 +36,6 @@ export const publications: Publication[] = [
     doi: "10.1016/j.fuel.2025.136893",
     url: "https://doi.org/10.1016/j.fuel.2025.136893",
     category: "chemical",
-    highlight: true,
   },
   {
     number: 3,
@@ -117,7 +116,6 @@ export const publications: Publication[] = [
     doi: "10.1080/17452759.2026.2653924",
     url: "https://doi.org/10.1080/17452759.2026.2653924",
     category: "hybrid",
-    highlight: true,
   },
   {
     number: 10,
@@ -129,7 +127,6 @@ export const publications: Publication[] = [
     doi: "10.1016/j.asr.2026.01.005",
     url: "https://doi.org/10.1016/j.asr.2026.01.005",
     category: "hybrid",
-    highlight: true,
   },
   {
     number: 11,
@@ -142,6 +139,7 @@ export const publications: Publication[] = [
     doi: "10.1080/17452759.2025.2533944",
     url: "https://doi.org/10.1080/17452759.2025.2533944",
     category: "hybrid",
+    highlight: true,
   },
   {
     number: 12,
@@ -153,6 +151,7 @@ export const publications: Publication[] = [
     doi: "10.2514/1.J064284",
     url: "https://doi.org/10.2514/1.J064284",
     category: "hybrid",
+    highlight: true,
   },
   {
     number: 13,
@@ -198,6 +197,7 @@ export const publications: Publication[] = [
     doi: "10.1016/j.jmps.2024.105554",
     url: "https://doi.org/10.1016/j.jmps.2024.105554",
     category: "photonics",
+    highlight: true,
   },
 ];
 

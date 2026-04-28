@@ -92,37 +92,49 @@ export default function CVPage() {
 
       <Section
         eyebrow="Selective Honors"
-        title="Selective honors"
-        description="Most distinguished recognition. See the full list on the Awards page."
+        title="Selective honors & fellowships"
+        description="Most distinguished recognition and competitive fellowships. See the full list on the Awards page."
       >
         <ul className="space-y-4">
-          {awards
-            .filter((a) => a.highlight)
-            .map((a, i) => (
-              <li
-                key={i}
-                className="grid gap-1 border-b border-border pb-4 last:border-b-0 md:grid-cols-[120px_1fr] md:gap-6"
-              >
-                <span className="font-mono text-xs uppercase tracking-wide text-muted-foreground md:text-sm">
-                  {a.year}
-                </span>
-                <div>
-                  <p className="font-heading text-base font-semibold text-foreground">
-                    {a.title}
+          {[
+            {
+              year: "2026–2031",
+              title: "Sejong Science Fellowship",
+              body: "National Research Foundation of Korea (NRF)",
+              detail: "KRW 500,000,000",
+            },
+            {
+              year: "2020–2026",
+              title: "SBS Foundation Research Fellowship",
+              body: "SBS Foundation",
+              detail: "KRW 97,000,000",
+            },
+            ...awards.filter((a) => a.highlight),
+          ].map((a, i) => (
+            <li
+              key={i}
+              className="grid gap-1 border-b border-border pb-4 last:border-b-0 md:grid-cols-[120px_1fr] md:gap-6"
+            >
+              <span className="font-mono text-xs uppercase tracking-wide text-muted-foreground md:text-sm">
+                {a.year}
+              </span>
+              <div>
+                <p className="font-heading text-base font-semibold text-foreground">
+                  {a.title}
+                </p>
+                {a.body && (
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {a.body}
                   </p>
-                  {a.body && (
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      {a.body}
-                    </p>
-                  )}
-                  {a.detail && (
-                    <p className="mt-1 text-xs italic text-muted-foreground">
-                      {a.detail}
-                    </p>
-                  )}
-                </div>
-              </li>
-            ))}
+                )}
+                {a.detail && (
+                  <p className="mt-1 text-xs italic text-muted-foreground">
+                    {a.detail}
+                  </p>
+                )}
+              </div>
+            </li>
+          ))}
         </ul>
         <div className="mt-6 flex justify-end">
           <Link

@@ -8,9 +8,9 @@ type Props = {
 
 export function PageHeader({ eyebrow, title, description }: Props) {
   return (
-    <Container className="pt-16 pb-10 md:pt-24 md:pb-14">
+    <Container className="pt-12 pb-6 md:pt-20 md:pb-10">
       {eyebrow && (
-        <p className="mb-4 text-xs font-mono uppercase tracking-[0.18em] text-brand-primary">
+        <p className="mb-3 text-xs font-mono uppercase tracking-[0.18em] text-brand-primary">
           {eyebrow}
         </p>
       )}
@@ -18,7 +18,7 @@ export function PageHeader({ eyebrow, title, description }: Props) {
         {title}
       </h1>
       {description && (
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
           {description}
         </p>
       )}

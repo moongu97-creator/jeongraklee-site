@@ -24,7 +24,7 @@ export function Section({
   const inner = (
     <>
       {(eyebrow || title || description) && (
-        <header className="mb-8 md:mb-12">
+        <header className="mb-6 md:mb-8">
           {eyebrow && (
             <p className="mb-2 text-xs font-mono uppercase tracking-[0.18em] text-brand-primary">
               {eyebrow}
@@ -36,7 +36,7 @@ export function Section({
             </h2>
           )}
           {description && (
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
               {description}
             </p>
           )}
@@ -47,7 +47,7 @@ export function Section({
   );
 
   return (
-    <section id={id} className={cn("py-12 md:py-16", className)}>
+    <section id={id} className={cn("py-8 md:py-12", className)}>
       {contained ? <Container>{inner}</Container> : inner}
     </section>
   );
