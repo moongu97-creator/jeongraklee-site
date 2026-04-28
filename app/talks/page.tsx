@@ -29,12 +29,15 @@ export default function TalksPage() {
         title="Invited talks"
         description="Recent invited lectures across universities, research institutes, and aerospace industry."
       >
-        <ul className="space-y-5">
+        <ol className="space-y-5">
           {invitedTalks.map((t) => (
             <li
               key={t.number}
-              className="grid gap-2 border-b border-border pb-5 last:border-b-0 md:grid-cols-[180px_1fr] md:gap-6"
+              className="grid gap-2 border-b border-border pb-5 last:border-b-0 md:grid-cols-[48px_180px_1fr] md:gap-4"
             >
+              <span className="font-mono text-xs text-muted-foreground md:text-sm">
+                #{t.number}
+              </span>
               <div className="font-mono text-xs uppercase tracking-wide text-muted-foreground md:text-sm">
                 {t.date}
               </div>
@@ -53,7 +56,7 @@ export default function TalksPage() {
               </div>
             </li>
           ))}
-        </ul>
+        </ol>
       </Section>
 
       <Section
@@ -61,12 +64,15 @@ export default function TalksPage() {
         title="International conferences"
         description="Presentations at ASME SSDM, APS March Meeting, ICTAM, IUTAM, PRESM, and others."
       >
-        <ul className="space-y-4">
+        <ol className="space-y-4">
           {internationalConferences.map((c) => (
             <li
               key={c.number}
-              className="grid gap-1 border-b border-border pb-4 last:border-b-0 md:grid-cols-[80px_1fr] md:gap-6"
+              className="grid gap-1 border-b border-border pb-4 last:border-b-0 md:grid-cols-[48px_80px_1fr] md:gap-4"
             >
+              <span className="font-mono text-xs text-muted-foreground md:text-sm">
+                #{c.number}
+              </span>
               <span className="font-mono text-xs uppercase tracking-wide text-muted-foreground md:text-sm">
                 {c.year}
               </span>
@@ -88,7 +94,7 @@ export default function TalksPage() {
               </div>
             </li>
           ))}
-        </ul>
+        </ol>
       </Section>
 
       <Section eyebrow="Conference" title="Domestic conferences">
@@ -105,8 +111,11 @@ export default function TalksPage() {
             {domesticConferences.map((c) => (
               <li
                 key={c.number}
-                className="grid gap-1 border-b border-border py-4 last:border-b-0 md:grid-cols-[88px_1fr] md:gap-6"
+                className="grid gap-1 border-b border-border py-4 last:border-b-0 md:grid-cols-[48px_88px_1fr] md:gap-4"
               >
+                <span className="font-mono text-xs text-muted-foreground">
+                  #{c.number}
+                </span>
                 <span className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
                   {c.date}
                 </span>

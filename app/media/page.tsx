@@ -20,12 +20,15 @@ export default function MediaPage() {
       />
 
       <Section className="pt-0">
-        <ul className="space-y-5">
+        <ol className="space-y-5">
           {media.map((m) => (
             <li
               key={m.number}
-              className="grid gap-2 border-b border-border pb-5 last:border-b-0 md:grid-cols-[160px_1fr] md:gap-6"
+              className="grid gap-2 border-b border-border pb-5 last:border-b-0 md:grid-cols-[48px_160px_1fr] md:gap-4"
             >
+              <span className="font-mono text-xs text-muted-foreground md:text-sm">
+                #{m.number}
+              </span>
               <span className="font-mono text-xs uppercase tracking-wide text-muted-foreground md:text-sm">
                 {m.date}
               </span>
@@ -67,7 +70,7 @@ export default function MediaPage() {
               </div>
             </li>
           ))}
-        </ul>
+        </ol>
       </Section>
     </>
   );
