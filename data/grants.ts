@@ -54,6 +54,7 @@ export const grantsAsPI: Grant[] = [
     period: "Sep. 2020 – Feb. 2026",
     project:
       "Development of a Shell Theory-Based Integrated Structural Optimization System for Launch Vehicle Components",
+    highlight: true,
   },
 ];
 
