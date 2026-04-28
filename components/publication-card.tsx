@@ -49,7 +49,7 @@ export function PublicationCard({
         </h3>
         <p className="mt-1.5 text-sm text-muted-foreground">
           <span className="text-foreground/80">
-            <HighlightAuthor text={pub.authors} />
+            <HighlightAuthor text={pub.authors} myIndex={pub.myIndex} />
           </span>
         </p>
         <p className="mt-1 flex items-center gap-2 text-sm">

@@ -70,7 +70,7 @@ export default function PublicationsPage() {
                 {p.title}
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                <HighlightAuthor text={p.authors} />
+                <HighlightAuthor text={p.authors} myIndex={p.myIndex} />
               </p>
               <p className="mt-1 text-sm italic text-muted-foreground">
                 Under review

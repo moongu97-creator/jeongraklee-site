@@ -11,6 +11,7 @@ export type Publication = {
   category: ResearchAreaTag;
   note?: string;
   highlight?: boolean;
+  myIndex?: number;
 };
 
 export const publications: Publication[] = [
@@ -205,6 +206,7 @@ export type UnderReview = {
   number: number;
   authors: string;
   title: string;
+  myIndex?: number;
 };
 
 export const underReview: UnderReview[] = [
@@ -214,6 +216,7 @@ export const underReview: UnderReview[] = [
       "Kim, R.E.*, Lee, J.*, Ha, S.V., Kim, D., Lee, A., Lee, J.†, & Kim, H.S.†",
     title:
       "Microstructure and mechanical properties of 316L stainless steel fabricated by laser wire directed energy deposition",
+    myIndex: 1,
   },
   {
     number: 2,
@@ -233,6 +236,7 @@ export const underReview: UnderReview[] = [
       "Kim, R.E.*, Lee, J.*, Lee, J.*, Kim, S., Lee, J., Kim, K., Kwon, Y., Kang, H., Yun, G., Lee, A.†, Kim, D.†, & Kim, H.S.†",
     title:
       "Additively manufactured structure-optimized Ti-6Al-4V microthrusters: unveiling size effects from sample to system level",
+    myIndex: 2,
   },
   {
     number: 5,

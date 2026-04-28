@@ -87,7 +87,7 @@ export default function TalksPage() {
                   )}
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  <HighlightAuthor text={c.authors} />
+                  <HighlightAuthor text={c.authors} myIndex={c.myIndex} />
                 </p>
                 <p className="mt-1 text-sm italic text-muted-foreground">
                   {c.venue}

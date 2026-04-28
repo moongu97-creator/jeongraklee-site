@@ -97,6 +97,7 @@ export type Conference = {
   title: string;
   venue: string;
   award?: string;
+  myIndex?: number;
 };
 
 export const internationalConferences: Conference[] = [
@@ -117,6 +118,7 @@ export const internationalConferences: Conference[] = [
       "Enhancing Metal–polymer Adhesion via Surface Roughness Control in Laser Powder Bed Fusion for Space Structure Applications",
     venue:
       "ASME Aerospace Structures, Structural Dynamics, and Materials Conference (SSDM), June 8–10, Long Beach, CA, USA",
+    myIndex: 1,
   },
   {
     number: 3,
@@ -147,7 +149,7 @@ export const internationalConferences: Conference[] = [
   },
   {
     number: 6,
-    authors: "Kwak, H., Lee, J., Lee, J., Kim, J., & Lee, A.",
+    authors: "Kwak, H., Lee, J., Kim, J., & Lee, A.",
     year: 2024,
     title:
       "Wrinkling of a thin film encapsulated between identically pre-stretched two soft substrates",
@@ -156,7 +158,7 @@ export const internationalConferences: Conference[] = [
   },
   {
     number: 7,
-    authors: "Kim, S., Lee, J., Lee, J., & Lee, A.",
+    authors: "Kim, S., Lee, J., & Lee, A.",
     year: 2024,
     title:
       "Design of a scalable soft robot using thermo-pneumatic actuation on flexible electronics",
@@ -165,7 +167,7 @@ export const internationalConferences: Conference[] = [
   },
   {
     number: 8,
-    authors: "Kwak, H., Lee, J., Lee, J., & Lee, A.",
+    authors: "Kwak, H., Lee, J., & Lee, A.",
     year: 2023,
     title:
       "Wrinkling of thin films between two soft layers for stretchable circuits with high packing density",
@@ -191,7 +193,7 @@ export const internationalConferences: Conference[] = [
   },
   {
     number: 11,
-    authors: "Ki, K., Lee, J., Lee, J., & Lee, A.",
+    authors: "Ki, K., Lee, J., & Lee, A.",
     year: 2022,
     title:
       "From shallow to deep: buckling behavior of clamped spherical caps",
