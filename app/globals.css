@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b1120;
+  --muted: #64748b;
+  --muted-foreground: #475569;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --card-foreground: #0b1120;
+  --brand-primary: #4f46e5;
+  --brand-primary-hover: #4338ca;
+  --brand-accent: #06b6d4;
+  --brand-dark: #0b1120;
+  --tag-chemical: #2563eb;
+  --tag-hybrid: #7c3aed;
+  --tag-photonics: #db2777;
+  --tag-other: #64748b;
+}
+
+.dark {
+  --background: #0b1120;
+  --foreground: #f1f5f9;
+  --muted: #94a3b8;
+  --muted-foreground: #cbd5e1;
+  --border: #1e293b;
+  --card: #111827;
+  --card-foreground: #f1f5f9;
+  --brand-primary: #818cf8;
+  --brand-primary-hover: #a5b4fc;
+  --brand-accent: #22d3ee;
+  --brand-dark: #f1f5f9;
+  --tag-chemical: #60a5fa;
+  --tag-hybrid: #c084fc;
+  --tag-photonics: #f472b6;
+  --tag-other: #94a3b8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-hover: var(--brand-primary-hover);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-dark: var(--brand-dark);
+  --color-tag-chemical: var(--tag-chemical);
+  --color-tag-hybrid: var(--tag-hybrid);
+  --color-tag-photonics: var(--tag-photonics);
+  --color-tag-other: var(--tag-other);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-manrope), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo,
+    monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--brand-primary);
+  color: #ffffff;
+}
+
+a {
+  text-underline-offset: 3px;
+}
