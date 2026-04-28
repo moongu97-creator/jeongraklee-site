@@ -12,8 +12,8 @@ const NAV_ITEMS = [
   { href: "/research", label: "Research" },
   { href: "/cv", label: "CV" },
   { href: "/publications", label: "Publications" },
-  { href: "/awards", label: "Awards" },
   { href: "/talks", label: "Talks" },
+  { href: "/awards", label: "Awards" },
   { href: "/media", label: "Media" },
 ];
 

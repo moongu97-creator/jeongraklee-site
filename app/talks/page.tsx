@@ -6,6 +6,7 @@ import {
   domesticConferenceNote,
   domesticConferences,
 } from "@/data/talks";
+import { HighlightAuthor } from "@/components/highlight-author";
 import { ChevronDown } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -86,7 +87,7 @@ export default function TalksPage() {
                   )}
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {c.authors}
+                  <HighlightAuthor text={c.authors} />
                 </p>
                 <p className="mt-1 text-sm italic text-muted-foreground">
                   {c.venue}
@@ -135,7 +136,7 @@ export default function TalksPage() {
                     )}
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground md:text-sm">
-                    {c.authors}
+                    <HighlightAuthor text={c.authors} />
                   </p>
                   <p className="mt-1 text-xs italic text-muted-foreground md:text-sm">
                     {c.venue} · {c.location}

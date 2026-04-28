@@ -1,5 +1,6 @@
 import type { Publication } from "@/data/publications";
 import { CategoryTag } from "@/components/tag";
+import { HighlightAuthor } from "@/components/highlight-author";
 import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -47,7 +48,9 @@ export function PublicationCard({
           )}
         </h3>
         <p className="mt-1.5 text-sm text-muted-foreground">
-          <span className="text-foreground/80">{pub.authors}</span>
+          <span className="text-foreground/80">
+            <HighlightAuthor text={pub.authors} />
+          </span>
         </p>
         <p className="mt-1 flex items-center gap-2 text-sm">
           <em className="not-italic font-medium text-foreground">{pub.venue}</em>

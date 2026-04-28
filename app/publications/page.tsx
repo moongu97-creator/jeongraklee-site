@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/page-header";
 import { Section } from "@/components/section";
 import { PublicationCard } from "@/components/publication-card";
+import { HighlightAuthor } from "@/components/highlight-author";
 import {
   publicationsByCategory,
   underReview,
@@ -69,7 +70,7 @@ export default function PublicationsPage() {
                 {p.title}
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                {p.authors}
+                <HighlightAuthor text={p.authors} />
               </p>
               <p className="mt-1 text-sm italic text-muted-foreground">
                 Under review
