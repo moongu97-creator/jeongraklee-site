@@ -28,9 +28,9 @@ export const education: Education[] = [
       "Total GPA 3.61 / 4.30 (93.1 / 100); Major GPA 3.81 / 4.30 (95.1 / 100).",
     period: "Mar. 2015 – Feb. 2020",
     honors: [
-      "Mueunjae Award — POSTECH highest graduation honor",
-      "Next-Generation Engineering Leader Award — Highest Honor, NAEK",
-      "Talent Award of Korea — Minister of Education",
+      "Mueunjae Award (무은재상) — POSTECH highest graduation honor",
+      "Next-Generation Engineering Leader Award (한국공학한림원 차세대공학리더상) — Highest Honor, NAEK",
+      "Talent Award of Korea (대한민국 인재상) — Minister of Education",
     ],
   },
   {

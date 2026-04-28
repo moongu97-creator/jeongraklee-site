@@ -24,6 +24,14 @@ export function Footer() {
           >
             Google Scholar
           </a>
+          <a
+            href={profile.linkedInUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-foreground"
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
     </footer>

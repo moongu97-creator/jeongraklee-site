@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { PageHeader } from "@/components/page-header";
+import Image from "next/image";
+import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 import { TimelineEntry } from "@/components/timeline-entry";
 import { PublicationCard } from "@/components/publication-card";
@@ -12,7 +13,7 @@ import { publications } from "@/data/publications";
 import { awards } from "@/data/awards";
 import { journalReviewer, memberships } from "@/data/teaching";
 import { references } from "@/data/references";
-import { ArrowRight, FileDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -24,22 +25,77 @@ export const metadata: Metadata = {
 export default function CVPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Curriculum Vitae"
-        title="CV"
-        description={`A summary of education, experience, and service. The full CV is also available as a PDF download.`}
-      />
+      <section>
+        <Container className="pt-12 pb-10 md:pt-20 md:pb-14">
+          <div className="grid items-start gap-10 md:grid-cols-[280px_1fr] md:gap-14">
+            <div className="relative aspect-[3/4] w-56 overflow-hidden rounded-2xl border border-border bg-card md:w-full">
+              <Image
+                src={profile.photoUrl}
+                alt={`Portrait of ${profile.name}`}
+                fill
+                sizes="(min-width: 768px) 280px, 224px"
+                className="object-cover object-top"
+              />
+            </div>
+            <div>
+              <h1 className="font-heading text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+                {profile.name}
+              </h1>
+              <p className="mt-4 text-base font-semibold leading-snug text-brand-primary md:text-lg">
+                Postdoctoral Researcher at Pohang University of Science and Technology (POSTECH)
+              </p>
+              <p className="text-base font-semibold leading-snug text-brand-primary md:text-lg">
+                Center for Advanced Aerospace Materials, GIFT
+              </p>
 
-      <Section className="pt-0">
-        <a
-          href={profile.cvPdfUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5"
-        >
-          <FileDown className="h-4 w-4" /> Download full CV (PDF)
-        </a>
-      </Section>
+              <dl className="mt-6 space-y-2 text-sm md:text-base">
+                <div className="flex flex-wrap gap-2">
+                  <dt className="font-semibold text-foreground">Email:</dt>
+                  <dd>
+                    <a
+                      href={`mailto:${profile.email}`}
+                      className="text-foreground transition-colors hover:text-brand-primary"
+                    >
+                      {profile.email}
+                    </a>
+                  </dd>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <dt className="font-semibold text-foreground">Phone:</dt>
+                  <dd className="text-foreground">{profile.phone}</dd>
+                </div>
+              </dl>
+
+              <div className="mt-6 flex flex-wrap items-center gap-6 text-sm md:text-base">
+                <a
+                  href={profile.scholarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground underline underline-offset-4 transition-colors hover:text-brand-primary"
+                >
+                  Google Scholar
+                </a>
+                <a
+                  href={profile.linkedInUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground underline underline-offset-4 transition-colors hover:text-brand-primary"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href={profile.cvPdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground underline underline-offset-4 transition-colors hover:text-brand-primary"
+                >
+                  CV (PDF)
+                </a>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       <Section eyebrow="Education" title="Education">
         {education.map((e, i) => (
