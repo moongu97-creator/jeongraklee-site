@@ -135,21 +135,22 @@ export const awards: Award[] = [
   // Undergraduate (2015–2020)
   {
     year: "2020",
-    title: "Mueunjae Award",
+    title: "Mueunjae Award (무은재상)",
     body: "POSTECH (highest graduation honor)",
     level: "undergraduate",
     highlight: true,
   },
   {
     year: "2019",
-    title: "Next-Generation Engineering Leader Award — Highest Honor",
+    title:
+      "Next-Generation Engineering Leader Award (한국공학한림원 차세대공학리더상) — Highest Honor",
     body: "National Academy of Engineering of Korea (NAEK)",
     level: "undergraduate",
     highlight: true,
   },
   {
     year: "2019",
-    title: "Talent Award of Korea",
+    title: "Talent Award of Korea (대한민국 인재상)",
     body: "Ministry of Education",
     level: "undergraduate",
     highlight: true,
