@@ -100,7 +100,7 @@ export default async function PublicationDetailPage({
         <Section>
           <div
             className={cn(
-              "mx-auto grid gap-6",
+              "mx-auto grid items-start gap-6",
               pub.coverUrl && pub.thumbnailUrl
                 ? "max-w-5xl md:grid-cols-[1.6fr_1fr]"
                 : "max-w-3xl",
@@ -108,32 +108,28 @@ export default async function PublicationDetailPage({
           >
             {pub.thumbnailUrl && (
               <figure>
-                <div className="relative overflow-hidden rounded-xl border border-border bg-white shadow-sm">
-                  <div className="relative aspect-[1000/538]">
-                    <Image
-                      src={pub.thumbnailUrl}
-                      alt={`Graphical abstract — ${pub.title}`}
-                      fill
-                      sizes="(min-width: 768px) 640px, 100vw"
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
+                <div className="relative h-72 overflow-hidden rounded-xl border border-border bg-white shadow-sm md:h-96">
+                  <Image
+                    src={pub.thumbnailUrl}
+                    alt={`Graphical abstract — ${pub.title}`}
+                    fill
+                    sizes="(min-width: 768px) 640px, 100vw"
+                    className="object-contain p-3"
+                    priority
+                  />
                 </div>
               </figure>
             )}
             {pub.coverUrl && (
               <figure>
-                <div className="relative overflow-hidden rounded-xl border border-border bg-white shadow-sm">
-                  <div className="relative aspect-[3/4]">
-                    <Image
-                      src={pub.coverUrl}
-                      alt={`${pub.venue} cover`}
-                      fill
-                      sizes="(min-width: 768px) 380px, 100vw"
-                      className="object-contain"
-                    />
-                  </div>
+                <div className="relative h-72 overflow-hidden rounded-xl border border-border bg-white shadow-sm md:h-96">
+                  <Image
+                    src={pub.coverUrl}
+                    alt={`${pub.venue} cover`}
+                    fill
+                    sizes="(min-width: 768px) 380px, 100vw"
+                    className="object-contain p-3"
+                  />
                 </div>
                 <figcaption className="mt-2 text-center text-[11px] italic text-muted-foreground md:text-xs">
                   {pub.venue} {pub.year} — {pub.note ?? "Issue cover"}
