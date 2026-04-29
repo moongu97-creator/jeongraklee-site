@@ -18,8 +18,8 @@ export default function HomePage() {
 
       <Section
         eyebrow="Research at a glance"
-        title="A unified map of next-generation propulsion"
-        description="One framework spanning chemical (now), plasma-hybrid (near term), and photonic (long term) propulsion — connected by additive manufacturing, plasma actuation, and predictive thin-film mechanics."
+        title="A roadmap of next-generation propulsion"
+        description="One framework spanning chemical (now), plasma-hybrid (near term), and photonic-structural (long term) propulsion — three horizons unified by additive manufacturing, plasma actuation, and predictive thin-film mechanics. Each horizon targets a different mission timescale and technology readiness level, but all build on the same engineering toolkit."
       >
         <figure className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-tag-chemical/15 via-tag-hybrid/15 to-tag-photonics/15">
           <div className="aspect-[16/9] w-full">
