@@ -115,25 +115,65 @@ export default async function PublicationDetailPage({
         </Section>
       )}
 
+      {pub.background && (
+        <Section eyebrow="Background" title="Why this work">
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+            {pub.background}
+          </p>
+        </Section>
+      )}
+
+      {pub.approach && (
+        <Section eyebrow="Approach" title="Design idea">
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+            {pub.approach}
+          </p>
+        </Section>
+      )}
+
       {pub.highlights && pub.highlights.length > 0 && (
         <Section eyebrow="Highlights" title="Key results">
           <ul className="space-y-3">
             {pub.highlights.map((h, i) => (
               <li
                 key={i}
-                className="flex gap-3 border-l-2 border-brand-primary/30 pl-4 text-sm leading-relaxed text-muted-foreground md:text-base"
+                className="border-l-2 border-brand-primary/30 pl-4 text-sm leading-relaxed text-muted-foreground md:text-base"
               >
-                <span>{h}</span>
+                {h}
               </li>
             ))}
           </ul>
         </Section>
       )}
 
-      {pub.abstract && (
-        <Section eyebrow="Abstract" title="Abstract">
+      {pub.figures && pub.figures.length > 0 && (
+        <Section eyebrow="Figures" title="Selected figures">
+          <div className="space-y-10">
+            {pub.figures.map((f, i) => (
+              <figure key={i}>
+                <div className="overflow-hidden rounded-2xl border border-border bg-white">
+                  <Image
+                    src={f.src}
+                    alt={f.alt}
+                    width={1400}
+                    height={1000}
+                    sizes="(min-width: 768px) 960px, 100vw"
+                    className="h-auto w-full object-contain"
+                  />
+                </div>
+                <figcaption className="mt-3 text-xs leading-relaxed text-muted-foreground md:text-sm">
+                  {f.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {pub.significance && (
+        <Section eyebrow="Significance" title="Why it matters">
           <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-            {pub.abstract}
+            {pub.significance}
           </p>
         </Section>
       )}

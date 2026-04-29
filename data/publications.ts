@@ -14,9 +14,18 @@ export type Publication = {
   myIndex?: number;
   thumbnailUrl?: string;
   slug?: string;
-  abstract?: string;
-  abstractKo?: string;
+  /** 1-paragraph framing of why this work was needed (the gap) */
+  background?: string;
+  /** 1-paragraph summary of the design idea / approach */
+  approach?: string;
+  /** Key result bullets (numbers, comparisons) */
   highlights?: string[];
+  /** 1-paragraph significance / position in the research arc */
+  significance?: string;
+  /** Selected figures with captions (rendered in-flow on the detail page) */
+  figures?: Array<{ src: string; alt: string; caption: string }>;
+  /** Original journal abstract (kept for reference; not rendered by default) */
+  abstract?: string;
   videoUrl?: string;
 };
 
@@ -58,13 +67,38 @@ export const publications: Publication[] = [
     highlight: true,
     thumbnailUrl: "/papers/pub-3.png",
     slug: "lab-on-chip-multimode-2024",
-    abstract:
-      "In the realm of nano/microsatellite clustering, the demand for microthrusters is steadily growing. Solid propellant microthrusters, recognized for their lightweight build and structural simplicity, carry significant commercial promise. However, existing solid propellant microthrusters manufactured using MEMS technology encounter notable issues such as inconsistent thrust generation positions, limited thrust profiles, and issues related to productivity, scalability, and durability. In this study, we propose a novel shared-chamber solid-propellant microthruster design that consistently produces thrust at a designated position and accommodates multiple thrust modes. The components and fabrication of this thruster were developed using lab-on-printed-circuit-board (PCB) technology and PCB surface mount technology, showcasing enhanced structural stability, scalability, and potential for mass production. Our ignition and combustion experiments confirmed the repeatability of the unit operation, a fundamental feature of this innovative microthruster. Furthermore, we successfully implemented and evaluated the power mode for increased thrust and the continuous mode for prolonged operational duration. Integrating the lab-on-PCB-based shared-chamber solid propellant microthruster with propulsion and electronic control systems holds promising potential for future satellite missions.",
+    background:
+      "In our earlier Lab-on-PCB solid-propellant microthruster (SPMT) array, each chamber segment fired only once and the thrust origin shifted between firings — limiting both repeatability and the available thrust profile. Real CubeSat missions, however, alternate between high-thrust orbital maneuvers and low-thrust attitude holding. We asked whether a single Lab-on-PCB device could deliver both.",
+    approach:
+      "A shared-combustion-chamber design in which multiple solid-propellant cartridges share one chamber and one nozzle. Membranes isolate each cartridge until ignition; once a cartridge is fired, the gases break through the membrane and vent through the same fixed nozzle. The same hardware then runs three operating modes — Sequential, Power, and Continuous — by changing the ignition pattern.",
     highlights: [
-      "Shared-chamber design produces thrust at a fixed position across all firings — eliminates the position-drift issue of conventional MEMS solid-propellant arrays.",
-      "Three operating modes on a single device: Sequential (1→4), Power (1+3, 2+4), and Continuous (1+2+3+4) — single hardware, multi-mission flexibility.",
-      "Manufactured via Lab-on-PCB + PCB surface-mount technology — scalable to mass production with standard PCB lines.",
-      "Ignition repeatability validated; structural stability confirmed across all modes.",
+      "Sequential mode — 49.98 mN mean thrust at 83.30% efficiency, 73.88 s Isp (88.51% of theoretical). 12-firing repeatability: thrust CV 8.49%, total impulse CV 6.74%.",
+      "Power mode — simultaneous firing of paired cartridges yields 148.02 mN (≈3× single-cartridge), 98.68% efficiency — near the theoretical maximum. Suited to short orbital burns.",
+      "Continuous mode — staggered firing sustains thrust for 11.52 s with a total impulse of 566.50 mN·s. Suited to attitude holding.",
+      "Same Lab-on-PCB + SMT pipeline as the underlying platform — multi-mode capability comes without sacrificing scalability or mass-production compatibility.",
+      "Selected as inside front cover, Lab on a Chip, 2024.",
+    ],
+    significance:
+      "Resolves the single-shot limitation of MEMS solid-propellant arrays: one device, multiple mission profiles, fixed thrust origin. Bridges the gap between research-grade demonstrators and operational small-satellite hardware — the same propulsion module can be re-tasked from orbital maneuvering to attitude holding without replacement.",
+    figures: [
+      {
+        src: "/papers/pub-3-fig1.png",
+        alt: "Lab-on-PCB fabrication and shared-chamber design",
+        caption:
+          "Figure 1. (a–c) Four-layer Lab-on-PCB stack with cartridge chambers, ignition plate, and nozzle plate. Cross-sections highlight the membrane between each cartridge and the shared chamber. (d) The four PCB layers and the assembled microthruster. (e1–e3) Three operating modes — Sequential, Power, and Continuous — defined by the cartridge ignition pattern.",
+      },
+      {
+        src: "/papers/pub-3-fig5.png",
+        alt: "Five-thruster fabrication and three-point thrust measurement setup",
+        caption:
+          "Figure 5. (a) Five fabricated shared-chamber microthrusters. (b–c) Three-point thrust measurement system: load cells under a lightweight platform isolate the thrust signal at the fixed thrust-generation spot, calibrated against a voltage reference.",
+      },
+      {
+        src: "/papers/pub-3-fig7.png",
+        alt: "Sequential-mode thrust profiles for three sample thrusters",
+        caption:
+          "Figure 7. Sequential-mode thrust profiles for three independent sample thrusters across four cartridge segments. Each unit operation shows ignition delay → membrane breakage → steady-state thrust, repeated consistently across firings — confirming the repeatability central to multi-mode operation.",
+      },
     ],
   },
   {
