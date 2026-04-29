@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const SPEED_PX_PER_SEC = 40;
-const STEP = 336;
 
 export type MarqueeItem = {
   image: string;
@@ -15,7 +15,15 @@ export type MarqueeItem = {
   href?: string;
 };
 
-export function ScrollingMarquee({ items }: { items: MarqueeItem[] }) {
+export type MarqueeLayout = "wide" | "tall";
+
+type Props = {
+  items: MarqueeItem[];
+  layout?: MarqueeLayout;
+};
+
+export function ScrollingMarquee({ items, layout = "wide" }: Props) {
+  const isTall = layout === "tall";
   const doubled = [...items, ...items];
 
   const trackRef = useRef<HTMLDivElement>(null);
@@ -56,6 +64,11 @@ export function ScrollingMarquee({ items }: { items: MarqueeItem[] }) {
 
   if (items.length === 0) return null;
 
+  const cardWidthClass = isTall ? "w-56 md:w-60" : "w-72 md:w-80";
+  const aspectClass = isTall ? "aspect-[3/4]" : "aspect-[16/10]";
+  const objectPosClass = isTall ? "object-top" : "object-center";
+  const stepPx = isTall ? 240 + 16 : 320 + 16;
+
   return (
     <div
       className="relative py-2"
@@ -67,40 +80,64 @@ export function ScrollingMarquee({ items }: { items: MarqueeItem[] }) {
         className="flex gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {doubled.map((item, i) => {
-          const card = (
-            <div className="relative aspect-[16/10] w-72 shrink-0 overflow-hidden rounded-2xl border border-border bg-card transition-transform hover:scale-[1.02] md:w-80">
+          const cardImage = (
+            <div
+              className={cn(
+                "relative shrink-0 overflow-hidden rounded-2xl border border-border bg-card transition-transform hover:scale-[1.02]",
+                aspectClass,
+                cardWidthClass,
+              )}
+            >
               <Image
                 src={item.image}
                 alt={item.alt}
                 fill
-                sizes="(min-width: 768px) 320px, 288px"
-                className="object-cover"
+                sizes={isTall ? "240px" : "(min-width: 768px) 320px, 288px"}
+                className={cn("object-cover", objectPosClass)}
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/60 to-transparent p-3 text-white">
-                <p className="line-clamp-2 text-xs font-medium md:text-sm">
-                  {item.title}
-                </p>
-                {item.meta && (
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-wide opacity-80">
-                    {item.meta}
+              {!isTall && (
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/60 to-transparent p-3 text-white">
+                  <p className="line-clamp-2 text-xs font-medium md:text-sm">
+                    {item.title}
                   </p>
-                )}
-              </div>
+                  {item.meta && (
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-wide opacity-80">
+                      {item.meta}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           );
+
+          const wrapperClass = isTall
+            ? cn("flex flex-col shrink-0", cardWidthClass)
+            : "block shrink-0";
+
+          const inner = (
+            <>
+              {cardImage}
+              {isTall && item.meta && (
+                <p className="mt-2 line-clamp-2 px-1 text-center text-[11px] leading-snug text-muted-foreground md:text-xs">
+                  {item.meta}
+                </p>
+              )}
+            </>
+          );
+
           return item.href ? (
             <a
               key={i}
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              className={wrapperClass}
             >
-              {card}
+              {inner}
             </a>
           ) : (
-            <div key={i} className="block">
-              {card}
+            <div key={i} className={wrapperClass}>
+              {inner}
             </div>
           );
         })}
@@ -117,7 +154,7 @@ export function ScrollingMarquee({ items }: { items: MarqueeItem[] }) {
 
       <button
         type="button"
-        onClick={() => nudge(-STEP)}
+        onClick={() => nudge(-stepPx)}
         aria-label="Previous"
         className="absolute left-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-colors hover:bg-background"
       >
@@ -125,7 +162,7 @@ export function ScrollingMarquee({ items }: { items: MarqueeItem[] }) {
       </button>
       <button
         type="button"
-        onClick={() => nudge(STEP)}
+        onClick={() => nudge(stepPx)}
         aria-label="Next"
         className="absolute right-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-colors hover:bg-background"
       >

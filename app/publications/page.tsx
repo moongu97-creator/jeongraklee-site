@@ -37,7 +37,7 @@ export default function PublicationsPage() {
         }
       />
 
-      <ScrollingMarquee items={publicationsMarqueeItems} />
+      <ScrollingMarquee items={publicationsMarqueeItems} layout="tall" />
 
       <Section
         eyebrow="Thrust I"
