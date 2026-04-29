@@ -27,13 +27,13 @@ export default function CVPage() {
     <>
       <section>
         <Container className="pt-12 pb-10 md:pt-20 md:pb-14">
-          <div className="grid items-start gap-10 md:grid-cols-[280px_1fr] md:gap-14">
-            <div className="relative aspect-[3/4] w-56 overflow-hidden rounded-2xl border border-border bg-card md:w-full">
+          <div className="grid items-start gap-8 md:grid-cols-[180px_1fr] md:gap-10">
+            <div className="relative aspect-[3/4] w-36 overflow-hidden rounded-2xl border border-border bg-card md:w-full">
               <Image
                 src={profile.photoUrl}
                 alt={`Portrait of ${profile.name}`}
                 fill
-                sizes="(min-width: 768px) 280px, 224px"
+                sizes="(min-width: 768px) 180px, 144px"
                 className="object-cover object-top"
               />
             </div>

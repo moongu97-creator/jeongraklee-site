@@ -46,8 +46,8 @@ export const publications: Publication[] = [
     title:
       "Lab-on-PCB solid propellant microthruster with multi-mode thrust capabilities",
     venue: "Lab on a Chip",
-    doi: "10.1039/D4LC00157E",
-    url: "https://doi.org/10.1039/D4LC00157E",
+    doi: "10.1039/D4LC00516C",
+    url: "https://doi.org/10.1039/D4LC00516C",
     category: "chemical",
     note: "Selected as inside front cover",
     highlight: true,

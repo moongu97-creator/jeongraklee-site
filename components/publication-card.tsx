@@ -24,25 +24,6 @@ export function PublicationCard({
           {String(pub.number).padStart(2, "0")}
         </span>
       </div>
-      {pub.thumbnailUrl && !compact && (
-        <a
-          href={pub.url ?? "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden shrink-0 md:block"
-          aria-label={`Figure for ${pub.title}`}
-        >
-          <div className="relative aspect-[1000/538] w-52 overflow-hidden rounded-lg border border-border bg-white transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md">
-            <Image
-              src={pub.thumbnailUrl}
-              alt={`Figure for ${pub.title}`}
-              fill
-              sizes="208px"
-              className="object-contain"
-            />
-          </div>
-        </a>
-      )}
       <div className="flex-1">
         <div className="flex flex-wrap items-center gap-2 text-xs">
           <CategoryTag tag={pub.category} />
@@ -87,6 +68,25 @@ export function PublicationCard({
           )}
         </p>
       </div>
+      {pub.thumbnailUrl && !compact && (
+        <a
+          href={pub.url ?? "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden shrink-0 md:block"
+          aria-label={`Figure for ${pub.title}`}
+        >
+          <div className="relative aspect-[1000/538] w-52 overflow-hidden rounded-lg border border-border bg-white transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md">
+            <Image
+              src={pub.thumbnailUrl}
+              alt={`Figure for ${pub.title}`}
+              fill
+              sizes="208px"
+              className="object-contain"
+            />
+          </div>
+        </a>
+      )}
     </article>
   );
 }
