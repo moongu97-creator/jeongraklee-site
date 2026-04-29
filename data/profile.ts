@@ -14,7 +14,7 @@ export const profile = {
   cvPdfUrl: "/cv.pdf",
   photoUrl: "/profile.jpg",
   portraitUrl: "/portrait.jpg",
-  bio: "I received my Ph.D. in Mechanical Engineering from POSTECH (Feb. 2026) on space actuation frameworks. Prior to my doctoral study, I co-founded Perigee Aerospace Inc. (2016–2019) and led propulsion system development. I am currently a Postdoctoral Researcher at the Center for Advanced Aerospace Materials, Graduate Institute of Ferrous and Eco-Materials Technology (GIFT), POSTECH, supported by the Sejong Science Fellowship.",
+  bio: "I received my Ph.D. in Mechanical Engineering from POSTECH (Feb. 2026) on space actuation frameworks. Prior to my doctoral study, I co-founded Perigee Aerospace Inc. (2016–2019) and led propulsion system development. I am currently a Postdoctoral Researcher at the Center for Advanced Aerospace Materials, Graduate Institute of Ferrous and Eco-Materials Technology (GIFT), POSTECH, supported by the Sejong Science Fellowship. I was selected for Forbes 30 Under 30 Korea — Science (2026).",
   tagline:
     "Charting the path to next-generation space propulsion — from chemical to plasma-hybrid to photonic.",
   highlights: [

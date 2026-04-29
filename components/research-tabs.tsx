@@ -33,7 +33,7 @@ const TAB_HOVER_BORDER: Record<ResearchAreaTag, string> = {
 
 const SHORT_TITLE: Record<ResearchAreaTag, string> = {
   chemical: "Chemical Propulsion",
-  hybrid: "Plasma-Hybrid Propulsion",
+  hybrid: "Chemical-Plasma Propulsion",
   photonics: "Photonic Propulsion",
   other: "Aerospace Applications",
 };

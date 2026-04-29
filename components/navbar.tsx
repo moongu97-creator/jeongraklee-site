@@ -17,7 +17,7 @@ const NAV_ITEMS: NavItem[] = [
     label: "Research",
     subItems: [
       { href: "/research#chemical", label: "Chemical Propulsion" },
-      { href: "/research#hybrid", label: "Plasma-Hybrid Propulsion" },
+      { href: "/research#hybrid", label: "Chemical-Plasma Propulsion" },
       { href: "/research#photonics", label: "Photonic Propulsion" },
       { href: "/research#other", label: "Aerospace Applications" },
     ],
