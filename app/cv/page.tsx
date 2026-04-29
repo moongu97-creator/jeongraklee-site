@@ -5,8 +5,7 @@ import { Section } from "@/components/section";
 import { TimelineEntry } from "@/components/timeline-entry";
 import { PublicationCard } from "@/components/publication-card";
 import { profile } from "@/data/profile";
-import { education } from "@/data/education";
-import { experience } from "@/data/experience";
+import { career } from "@/data/career";
 import { patents, domesticPatentsSummary } from "@/data/patents";
 import { grantsAsParticipant } from "@/data/grants";
 import { publications } from "@/data/publications";
@@ -97,29 +96,16 @@ export default function CVPage() {
         </Container>
       </section>
 
-      <Section eyebrow="Education" title="Education">
-        {education.map((e, i) => (
+      <Section eyebrow="Background" title="Education & Experience">
+        {career.map((c, i) => (
           <TimelineEntry
             key={i}
-            period={e.period}
-            title={e.institution}
-            subtitle={e.degree || undefined}
-            meta={e.location}
-            detail={e.detail}
-            bullets={e.honors}
-          />
-        ))}
-      </Section>
-
-      <Section eyebrow="Experience" title="Professional experience">
-        {experience.map((x, i) => (
-          <TimelineEntry
-            key={i}
-            period={x.period}
-            title={x.role}
-            subtitle={x.organization}
-            meta={x.detail}
-            bullets={x.bullets}
+            period={c.period}
+            title={c.title}
+            subtitle={c.institution}
+            meta={c.location}
+            detail={c.detail}
+            bullets={c.bullets}
           />
         ))}
       </Section>
