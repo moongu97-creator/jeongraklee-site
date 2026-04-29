@@ -39,6 +39,24 @@ export const publications: Publication[] = [
     url: "https://doi.org/10.1016/j.ast.2025.111256",
     category: "chemical",
     highlight: true,
+    thumbnailUrl: "/papers/pub-1.png",
+    slug: "n2o-ch4-rga-2026",
+    summary:
+      "Plasma-assisted combustion in a rotating gliding arc (RGA) thruster expands the operable oxidizer-to-fuel envelope of N₂O/CH₄ mixtures from the conventional near-stoichiometric window all the way to ROF 5–1000, effectively turning a bipropellant into a quasi-monopropellant. The volumetric ignition supplied by the rotating plasma column stabilizes the flame across this entire range; with an extended after-chamber (L = 70 mm) at sub-200 W input, the thruster surpasses the N₂O monopropellant theoretical performance — characteristic velocity (C*) reaches 1468.90 m/s and specific impulse (Isp) 138.16 s near the optimal ROF, while still maintaining 87.8% efficiency at the extreme ROF 1000 limit. The result combines monopropellant safety with bipropellant performance in a low-power architecture suited to microsatellites.",
+    highlights: [
+      "Lean-burn envelope expanded to ROF 5–1000 — far beyond the conventional near-stoichiometric range.",
+      "C* = 1468.90 m/s at near-optimal ROF (98.61% efficiency), exceeding N₂O monopropellant theory by ≈33%.",
+      "Stable flame and Isp 138.16 s with sub-200 W plasma power; 87.8% efficiency retained at the extreme ROF 1000 limit.",
+      "High-speed imaging confirms volumetric ignition by the rotating plasma column across the entire ROF range.",
+    ],
+    figures: [
+      {
+        src: "/papers/pub-1-fig1.png",
+        alt: "High-speed flame visualization across ROF 5–1000",
+        caption:
+          "High-speed flame visualization across the full ROF window — emission intensity and biplanar views show sustained plasma-stabilized combustion under all tested conditions.",
+      },
+    ],
   },
   {
     number: 2,
@@ -179,6 +197,24 @@ export const publications: Publication[] = [
     url: "https://doi.org/10.1080/17452759.2025.2533944",
     category: "hybrid",
     highlight: true,
+    thumbnailUrl: "/papers/pub-11.png",
+    slug: "ti-microthruster-lpbf-2025",
+    summary:
+      "Laser powder bed fusion (LPBF) of Ti-6Al-4V is pushed to a sub-millimeter regime to produce thin-walled microthrusters with previously inaccessible geometric fidelity. Decomposition chambers with 0.5 mm walls and Ø180 μm injector orifices are printed at 99.95% relative density and ±4.1% dimensional tolerance, surpassing what conventional precision machining can deliver at this scale. The same hardware sustains 60 s of continuous operation at 700 °C without cracking or deformation, retains 181 MPa tensile strength at temperature, and reaches 84.3% C* efficiency / 91.7% Isp efficiency. With a thrust-to-weight ratio of 4.45 — about 2.5× higher than commercial sub-Newton thrusters in the same class — the work shows that LPBF can directly fabricate flight-grade Ti-6Al-4V microthrusters that are simultaneously light, robust, and high-performing.",
+    highlights: [
+      "Ti-6Al-4V LPBF prints 0.5 mm walls and Ø180 μm orifices at 99.95% relative density, ±4.1% dimensional tolerance.",
+      "60 s continuous operation at 700 °C with no cracking or deformation; tensile strength 181 MPa at temperature.",
+      "C* efficiency 84.3% and Isp efficiency 91.7% — performance class of state-of-the-art monopropellant thrusters.",
+      "TWR 4.45 — about 2.5× over commercial sub-Newton thrusters of the same thrust class.",
+    ],
+    figures: [
+      {
+        src: "/papers/pub-11-fig1.png",
+        alt: "Fabrication fidelity validated by X-ray CT",
+        caption:
+          "Fabrication fidelity validated by X-ray CT. Orifice diameters (D₁, D₂, D₃) and chamber wall thickness (T) of the printed Ti-6Al-4V parts match the CAD geometry within ±4.1%.",
+      },
+    ],
   },
   {
     number: 12,
@@ -191,6 +227,24 @@ export const publications: Publication[] = [
     url: "https://doi.org/10.2514/1.J064284",
     category: "hybrid",
     highlight: true,
+    thumbnailUrl: "/papers/pub-12.png",
+    slug: "h2o2-rga-aiaa-2025",
+    summary:
+      "A green monopropellant thruster gains a second energy input — rotating gliding arc (RGA) plasma — that lifts its performance ceiling without changing the propellant. Hydrogen peroxide is first decomposed over a manganese-oxide catalyst (MnOₓ/Al₂O₃, 26.0% Mn doping, 70.63 m²/g surface area), and the hot decomposition gas then passes through an AC 20 kHz RGA discharge that adds electrical energy on top of the chemical heat release. Across multiple inlet pressures (5.0–6.0 bar), chamber pressure rises by 43.6–44.8% and characteristic velocity roughly doubles (217 → 448 m/s) compared with catalytic-only operation, while the thruster sustains 40 s of continuous burn at ~1.25 kW. The hybrid concept opens a route to in-flight thrust modulation — by simply throttling plasma power on a fixed propellant — without the propellant logistics of a bipropellant system.",
+    highlights: [
+      "Catalytic + RGA hybrid raises C* from 217 to 448 m/s — about 2× the H₂O₂ monopropellant theoretical limit.",
+      "Chamber pressure up 44.8% (1.90 → 2.75 bar) at 5.0 bar inlet, evidencing plasma-to-fluid energy transfer.",
+      "40 s continuous burn at ~1.25 kW (408 V × 6.37 A) — sustained electro-chemical operation validated.",
+      "Throttling plasma power on a fixed propellant enables multi-mode thrust without changing propellant or hardware.",
+    ],
+    figures: [
+      {
+        src: "/papers/pub-12-fig1.png",
+        alt: "Catalytic-only vs catalyst + RGA operation",
+        caption:
+          "Catalytic-only (chemical) versus catalyst + RGA (electro-chemical) operation. Plasma activation visibly intensifies the plume and shifts the steady-state pressure and temperature signatures.",
+      },
+    ],
   },
   {
     number: 13,
@@ -225,6 +279,24 @@ export const publications: Publication[] = [
     url: "https://doi.org/10.1016/j.ijmecsci.2025.111213",
     category: "photonics",
     highlight: true,
+    thumbnailUrl: "/papers/pub-15.png",
+    slug: "wrinkling-trilayers-2026",
+    summary:
+      "Pre-stretching introduces an extra geometric degree of freedom into the classical thin-film–on–soft-substrate wrinkling problem. By placing a thin film between two pre-stretched soft substrates and then releasing the system, this work measures and predicts how the wrinkle wavelength and amplitude evolve as functions of pre-stretch and modulus mismatch. Experiments and theory together map a phase space in which the trilayer's morphology can be tuned by stretch alone — decoupling wavelength from substrate stiffness in regimes that bilayer systems cannot reach. The result is a useful design lever for stretchable circuitry, optical metamaterials, and thin-film mechanics in general.",
+    highlights: [
+      "Trilayer geometry decouples wrinkle wavelength from substrate stiffness — controllable by pre-stretch alone.",
+      "Wavelength scales non-monotonically with pre-stretch, revealing transition regimes set by modulus ratio and geometry.",
+      "Quantitative experiment–theory map of wavelength and amplitude across a pre-stretch / modulus phase space.",
+      "Direct relevance to stretchable electrodes, photonic metamaterials, and thin-film instability design.",
+    ],
+    figures: [
+      {
+        src: "/papers/pub-15-fig1.png",
+        alt: "Experimental fabrication of the wrinkling trilayer",
+        caption:
+          "Experimental fabrication of the wrinkling trilayer — pre-stretch and film coating, curing/attaching, and the relaxing-and-buckling step that locks in the wrinkle morphology.",
+      },
+    ],
   },
   {
     number: 16,
@@ -237,6 +309,24 @@ export const publications: Publication[] = [
     url: "https://doi.org/10.1016/j.jmps.2024.105554",
     category: "photonics",
     highlight: true,
+    thumbnailUrl: "/papers/pub-16.png",
+    slug: "spherical-shell-buckling-2024",
+    summary:
+      "The classical view that geometric imperfections always lower the buckling load of a clamped spherical shell turns out to be incomplete. By introducing precisely controlled Gaussian-profile dimples into elastomeric (VPS) hemispherical shells across a range of shallowness (R/t = 30–80) and varying defect depth and width, this study shows that the knockdown factor is non-monotonic in shallowness — and that, in the right regime, certain defect placements actually stabilize rather than destabilize the structure. Three-dimensional finite-element analysis traces the underlying physics to a bifurcation from axisymmetric to non-axisymmetric buckling modes. The work reframes how engineers can think about pressure-vessel design: imperfections are not always penalties, and the standard 2D-axisymmetric analyses systematically over-predict buckling loads in the shallow regime.",
+    highlights: [
+      "Knockdown factor (KDF) varies non-monotonically with shallowness — challenging the classical monotonic-decrease assumption.",
+      "Non-axisymmetric buckling regime achieves KDF > 0.81 — certain defects stabilize rather than weaken the shell.",
+      "Mode bifurcation from axisymmetric to non-axisymmetric explains the 'bamboo-node' strengthening mechanism.",
+      "3D FEM is required for shallow shells; 2D axisymmetric analysis systematically over-predicts buckling loads.",
+    ],
+    figures: [
+      {
+        src: "/papers/pub-16-fig1.png",
+        alt: "Buckling response across the shallowness range",
+        caption:
+          "Buckling response across the shallowness range. Bifurcation envelope, normalized load–displacement curves, and pressure–time signatures with FEM correlation.",
+      },
+    ],
   },
 ];
 
