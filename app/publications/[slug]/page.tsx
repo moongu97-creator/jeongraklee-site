@@ -169,17 +169,16 @@ export default async function PublicationDetailPage({
 
       {pub.figures && pub.figures.length > 0 && (
         <Section eyebrow="Figures" title="Selected figures">
-          <div className="grid gap-8 md:grid-cols-2 md:gap-10">
+          <div className="grid items-start gap-8 md:grid-cols-2 md:gap-10">
             {pub.figures.map((f, i) => (
               <figure key={i}>
-                <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-white shadow-sm">
                   <Image
                     src={f.src}
                     alt={f.alt}
-                    width={1400}
-                    height={1000}
+                    fill
                     sizes="(min-width: 768px) 50vw, 100vw"
-                    className="h-auto w-full object-contain"
+                    className="object-contain p-3"
                   />
                 </div>
                 <figcaption className="mt-3 text-xs leading-relaxed italic text-muted-foreground md:text-sm">
