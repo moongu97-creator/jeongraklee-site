@@ -3,14 +3,20 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
-import type { MediaItem } from "@/data/media";
 
 const SPEED_PX_PER_SEC = 40;
-const STEP = 336; // card width (320) + gap (16)
+const STEP = 336;
 
-export function MediaMarquee({ items }: { items: MediaItem[] }) {
-  const withImages = items.filter((i) => i.image);
-  const doubled = [...withImages, ...withImages];
+export type MarqueeItem = {
+  image: string;
+  alt: string;
+  title: string;
+  meta?: string;
+  href?: string;
+};
+
+export function ScrollingMarquee({ items }: { items: MarqueeItem[] }) {
+  const doubled = [...items, ...items];
 
   const trackRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
@@ -18,7 +24,7 @@ export function MediaMarquee({ items }: { items: MediaItem[] }) {
   const isPaused = hovered || explicitPaused;
 
   useEffect(() => {
-    if (isPaused || withImages.length === 0) return;
+    if (isPaused || items.length === 0) return;
     let raf = 0;
     let last = performance.now();
     const tick = (now: number) => {
@@ -35,7 +41,7 @@ export function MediaMarquee({ items }: { items: MediaItem[] }) {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [isPaused, withImages.length]);
+  }, [isPaused, items.length]);
 
   const nudge = (delta: number) => {
     const el = trackRef.current;
@@ -48,7 +54,7 @@ export function MediaMarquee({ items }: { items: MediaItem[] }) {
     setExplicitPaused(true);
   };
 
-  if (withImages.length === 0) return null;
+  if (items.length === 0) return null;
 
   return (
     <div
@@ -61,12 +67,11 @@ export function MediaMarquee({ items }: { items: MediaItem[] }) {
         className="flex gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {doubled.map((item, i) => {
-          const firstUrl = item.outlets?.find((o) => o.url)?.url;
           const card = (
             <div className="relative aspect-[16/10] w-72 shrink-0 overflow-hidden rounded-2xl border border-border bg-card transition-transform hover:scale-[1.02] md:w-80">
               <Image
-                src={item.image!}
-                alt={item.title}
+                src={item.image}
+                alt={item.alt}
                 fill
                 sizes="(min-width: 768px) 320px, 288px"
                 className="object-cover"
@@ -75,16 +80,18 @@ export function MediaMarquee({ items }: { items: MediaItem[] }) {
                 <p className="line-clamp-2 text-xs font-medium md:text-sm">
                   {item.title}
                 </p>
-                <p className="mt-1 font-mono text-[10px] uppercase tracking-wide opacity-80">
-                  {item.date}
-                </p>
+                {item.meta && (
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-wide opacity-80">
+                    {item.meta}
+                  </p>
+                )}
               </div>
             </div>
           );
-          return firstUrl ? (
+          return item.href ? (
             <a
               key={i}
-              href={firstUrl}
+              href={item.href}
               target="_blank"
               rel="noopener noreferrer"
               className="block"

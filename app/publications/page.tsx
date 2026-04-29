@@ -2,11 +2,23 @@ import { PageHeader } from "@/components/page-header";
 import { Section } from "@/components/section";
 import { PublicationCard } from "@/components/publication-card";
 import { HighlightAuthor } from "@/components/highlight-author";
+import { ScrollingMarquee } from "@/components/scrolling-marquee";
 import {
+  publications,
   publicationsByCategory,
   underReview,
 } from "@/data/publications";
 import type { Metadata } from "next";
+
+const publicationsMarqueeItems = publications
+  .filter((p) => p.highlight && p.thumbnailUrl)
+  .map((p) => ({
+    image: p.thumbnailUrl!,
+    alt: p.title,
+    title: p.title,
+    meta: `${p.venue} (${p.year})`,
+    href: p.url,
+  }));
 
 export const metadata: Metadata = {
   title: "Publications",
@@ -24,6 +36,8 @@ export default function PublicationsPage() {
           "16 SCIE papers across three thrust areas. * Equal contribution; † Corresponding author."
         }
       />
+
+      <ScrollingMarquee items={publicationsMarqueeItems} />
 
       <Section
         eyebrow="Thrust I"

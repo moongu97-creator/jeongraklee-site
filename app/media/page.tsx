@@ -1,9 +1,19 @@
 import { PageHeader } from "@/components/page-header";
 import { Section } from "@/components/section";
-import { MediaMarquee } from "@/components/media-marquee";
+import { ScrollingMarquee } from "@/components/scrolling-marquee";
 import { media } from "@/data/media";
 import { Newspaper, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
+
+const mediaMarqueeItems = media
+  .filter((m) => m.image)
+  .map((m) => ({
+    image: m.image!,
+    alt: m.title,
+    title: m.title,
+    meta: m.date,
+    href: m.outlets?.find((o) => o.url)?.url,
+  }));
 
 export const metadata: Metadata = {
   title: "Media",
@@ -20,7 +30,7 @@ export default function MediaPage() {
         description="Selected press coverage of major research milestones, awards, and interviews — KBS, MBC, Forbes Korea, Yonhap News, Dong-A Science, and others."
       />
 
-      <MediaMarquee items={media} />
+      <ScrollingMarquee items={mediaMarqueeItems} />
 
       <Section className="pt-4">
         <ol className="space-y-5">
