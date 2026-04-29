@@ -12,6 +12,7 @@ export type Publication = {
   note?: string;
   highlight?: boolean;
   myIndex?: number;
+  thumbnailUrl?: string;
 };
 
 export const publications: Publication[] = [
@@ -50,6 +51,7 @@ export const publications: Publication[] = [
     category: "chemical",
     note: "Selected as inside front cover",
     highlight: true,
+    thumbnailUrl: "/papers/pub-3.png",
   },
   {
     number: 4,
