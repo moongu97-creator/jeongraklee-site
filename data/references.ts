@@ -16,6 +16,15 @@ export const references: Reference[] = [
     email: "annalee@postech.ac.kr",
   },
   {
+    name: "Prof. Junsuk Rho",
+    affiliation:
+      "Departments of Mechanical, Chemical, and Electrical Engineering, POSTECH",
+    address:
+      "77 Cheongam-ro, Nam-gu, Pohang-si, Gyeongsangbuk-do 37673, Republic of Korea",
+    tel: "+82-54-279-2187",
+    email: "jsrho@postech.ac.kr",
+  },
+  {
     name: "Dr. Hongjae Kang",
     affiliation:
       "Plasma Engineering Laboratory, Korea Institute of Machinery & Materials (KIMM)",
