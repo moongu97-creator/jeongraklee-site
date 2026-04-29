@@ -3,14 +3,26 @@ import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/hero";
 import { Section } from "@/components/section";
 import { CoverCarousel } from "@/components/cover-carousel";
+import { ScrollingMarquee } from "@/components/scrolling-marquee";
 import { ResearchAreaCard } from "@/components/research-area-card";
 import { PublicationCard } from "@/components/publication-card";
 import { researchAreas } from "@/data/research";
 import { publications } from "@/data/publications";
+import { media } from "@/data/media";
 
 const recentHighlights = publications
   .filter((p) => p.highlight)
   .slice(0, 5);
+
+const mediaMarqueeItems = media
+  .filter((m) => m.image)
+  .map((m) => ({
+    image: m.image!,
+    alt: m.title,
+    title: m.title,
+    meta: m.date,
+    href: m.outlets?.find((o) => o.url)?.url,
+  }));
 
 export default function HomePage() {
   return (
@@ -50,6 +62,22 @@ export default function HomePage() {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-primary transition-colors hover:text-brand-primary-hover"
           >
             All research areas <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </Section>
+
+      <Section
+        eyebrow="Press"
+        title="In the news"
+        description="Selected media coverage of recent research milestones and awards."
+      >
+        <ScrollingMarquee items={mediaMarqueeItems} />
+        <div className="mt-8 flex justify-end">
+          <Link
+            href="/media"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-primary transition-colors hover:text-brand-primary-hover"
+          >
+            All media coverage <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </Section>

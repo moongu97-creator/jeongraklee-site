@@ -67,6 +67,7 @@ export const publications: Publication[] = [
     venue: "Fuel",
     doi: "10.1016/j.fuel.2025.136893",
     url: "https://doi.org/10.1016/j.fuel.2025.136893",
+    thumbnailUrl: "/papers/pub-2.png",
     category: "chemical",
   },
   {
@@ -116,6 +117,7 @@ export const publications: Publication[] = [
     venue: "Sensors and Actuators A: Physical",
     doi: "10.1016/j.sna.2024.115347",
     url: "https://doi.org/10.1016/j.sna.2024.115347",
+    thumbnailUrl: "/papers/pub-4.png",
     category: "chemical",
   },
   {
@@ -127,6 +129,7 @@ export const publications: Publication[] = [
     venue: "Acta Astronautica",
     doi: "10.1016/j.actaastro.2024.03.012",
     url: "https://doi.org/10.1016/j.actaastro.2024.03.012",
+    thumbnailUrl: "/papers/pub-5.png",
     category: "chemical",
   },
   {
@@ -138,6 +141,7 @@ export const publications: Publication[] = [
     venue: "Sensors and Actuators A: Physical",
     doi: "10.1016/j.sna.2023.114738",
     url: "https://doi.org/10.1016/j.sna.2023.114738",
+    thumbnailUrl: "/papers/pub-6.png",
     category: "chemical",
   },
   {
@@ -149,6 +153,7 @@ export const publications: Publication[] = [
     venue: "Sensors and Actuators A: Physical",
     doi: "10.1016/j.sna.2023.114696",
     url: "https://doi.org/10.1016/j.sna.2023.114696",
+    thumbnailUrl: "/papers/pub-7.png",
     category: "chemical",
   },
   {
@@ -172,6 +177,7 @@ export const publications: Publication[] = [
     venue: "Virtual and Physical Prototyping",
     doi: "10.1080/17452759.2026.2653924",
     url: "https://doi.org/10.1080/17452759.2026.2653924",
+    thumbnailUrl: "/papers/pub-9.png",
     category: "hybrid",
   },
   {
@@ -183,6 +189,7 @@ export const publications: Publication[] = [
     venue: "Advances in Space Research",
     doi: "10.1016/j.asr.2026.01.005",
     url: "https://doi.org/10.1016/j.asr.2026.01.005",
+    thumbnailUrl: "/papers/pub-10.png",
     category: "hybrid",
   },
   {
@@ -255,6 +262,7 @@ export const publications: Publication[] = [
     venue: "Advances in Space Research",
     doi: "10.1016/j.asr.2025.01.063",
     url: "https://doi.org/10.1016/j.asr.2025.01.063",
+    thumbnailUrl: "/papers/pub-13.png",
     category: "hybrid",
   },
   {

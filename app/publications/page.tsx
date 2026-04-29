@@ -11,7 +11,7 @@ import {
 import type { Metadata } from "next";
 
 const publicationsMarqueeItems = publications
-  .filter((p) => p.highlight && p.thumbnailUrl)
+  .filter((p) => p.thumbnailUrl)
   .map((p) => ({
     image: p.thumbnailUrl!,
     alt: p.title,
