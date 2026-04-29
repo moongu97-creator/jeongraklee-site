@@ -18,7 +18,7 @@ export function PageHeader({ eyebrow, title, description }: Props) {
         {title}
       </h1>
       {description && (
-        <p className="mt-3 max-w-4xl text-base leading-relaxed text-muted-foreground md:text-lg">
+        <p className="mt-3 text-base leading-relaxed text-muted-foreground md:text-lg">
           {description}
         </p>
       )}
