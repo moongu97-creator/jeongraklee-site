@@ -46,6 +46,18 @@ export function Navbar() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  const handleSubClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    const [path, hash] = href.split("#");
+    if (hash && pathname === path) {
+      e.preventDefault();
+      // eslint-disable-next-line react-hooks/immutability -- intentional: change hash to trigger hashchange listener in ResearchTabs
+      window.location.hash = hash;
+    }
+  };
+
   const linkClass = (href: string) =>
     cn(
       "relative text-sm font-medium transition-colors",
@@ -92,6 +104,7 @@ export function Navbar() {
                       <li key={sub.href}>
                         <Link
                           href={sub.href}
+                          onClick={(e) => handleSubClick(e, sub.href)}
                           className="block px-5 py-2.5 text-sm text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-foreground"
                         >
                           {sub.label}
@@ -155,7 +168,10 @@ export function Navbar() {
                       <Link
                         key={sub.href}
                         href={sub.href}
-                        onClick={closeMobile}
+                        onClick={(e) => {
+                          handleSubClick(e, sub.href);
+                          closeMobile();
+                        }}
                         className="rounded-md px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground"
                       >
                         {sub.label}

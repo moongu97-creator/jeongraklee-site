@@ -28,7 +28,10 @@ export const media: MediaItem[] = [
     title:
       "Air-breathing electric propulsion at atmospheric pressure (Pub #10, ASR 2026)",
     outlets: [
-      { name: "YTN Science" },
+      {
+        name: "YTN Science",
+        url: "https://www.youtube.com/watch?v=Phfb95JQNwA",
+      },
       {
         name: "Hankook Ilbo",
         url: "https://www.hankookilbo.com/news/article/A2026031114010004141",
