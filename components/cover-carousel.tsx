@@ -44,8 +44,10 @@ export function CoverCarousel() {
             <div
               key={s.src}
               className={cn(
-                "absolute inset-0 transition-opacity duration-500",
-                i === index ? "opacity-100" : "opacity-0",
+                "absolute inset-0 transition-all duration-1000 ease-in-out",
+                i === index
+                  ? "scale-100 opacity-100"
+                  : "scale-105 opacity-0",
               )}
               aria-hidden={i !== index}
             >

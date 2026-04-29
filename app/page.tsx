@@ -21,21 +21,35 @@ export default function HomePage() {
         eyebrow="Research at a glance"
         title="A roadmap of next-generation propulsion"
       >
-        <div className="mb-8 max-w-5xl space-y-3">
+        <div className="mb-8 max-w-5xl space-y-4">
           <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
             One framework spanning chemical (now), plasma-hybrid (near term),
-            and photonic-structural (long term) propulsion — connected by
-            additive manufacturing, plasma actuation, and predictive thin-film
-            mechanics.
+            and photonic-structural (long term) propulsion.
           </p>
-          <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-            Each horizon pairs with the enabling technology that brings it to
-            flight: additive manufacturing scales chemical micro-thrusters from
-            prototype to constellation, plasma actuation drives the rotating
-            gliding arc thruster at the heart of near-term in-space mobility,
-            and predictive thin-film mechanics underpins the lightweight
-            active-structure sails of photonic-structural propulsion.
-          </p>
+          <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+            <li>
+              <strong className="font-semibold text-foreground">
+                Chemical (now)
+              </strong>{" "}
+              — advancing today&apos;s chemical thrusters for CubeSats and
+              constellations.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                Plasma-hybrid (near term)
+              </strong>{" "}
+              — rotating gliding arc thruster combining high thrust (&gt;1 N)
+              and high specific impulse (&gt;500 s) for orbital transfer
+              vehicles and kick stages.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                Photonic-structural sail (long term)
+              </strong>{" "}
+              — propellantless propulsion via light pressure on
+              active-structure thin-film sails for sustained long-range cruise.
+            </li>
+          </ul>
         </div>
         <CoverCarousel />
       </Section>
