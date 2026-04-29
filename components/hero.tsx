@@ -11,7 +11,7 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_60%_at_50%_0%,color-mix(in_oklab,var(--brand-primary)_18%,transparent)_0%,transparent_70%)]"
       />
-      <Container className="pt-16 pb-14 md:pt-24 md:pb-20">
+      <Container className="pt-16 pb-8 md:pt-24 md:pb-10">
         <div className="grid items-stretch gap-10 md:grid-cols-[1fr_320px] md:gap-12">
           <div>
             <p className="mb-4 text-xs font-mono uppercase tracking-[0.2em] text-brand-primary">
