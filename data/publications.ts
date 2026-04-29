@@ -13,6 +13,8 @@ export type Publication = {
   highlight?: boolean;
   myIndex?: number;
   thumbnailUrl?: string;
+  /** First-page capture of the paper PDF (used by the marquee) */
+  paperImageUrl?: string;
   /** Issue cover image (e.g. journal front/inside-front cover) */
   coverUrl?: string;
   slug?: string;
@@ -40,6 +42,7 @@ export const publications: Publication[] = [
     category: "chemical",
     highlight: true,
     thumbnailUrl: "/papers/pub-1.png",
+    paperImageUrl: "/papers/pub-1-paper.png",
     slug: "n2o-ch4-rga-2026",
     summary:
       "Plasma-assisted combustion in a rotating gliding arc (RGA) thruster expands the operable oxidizer-to-fuel envelope of N₂O/CH₄ mixtures from the conventional near-stoichiometric window all the way to ROF 5–1000, effectively turning a bipropellant into a quasi-monopropellant. The volumetric ignition supplied by the rotating plasma column stabilizes the flame across this entire range; with an extended after-chamber (L = 70 mm) at sub-200 W input, the thruster surpasses the N₂O monopropellant theoretical performance — characteristic velocity (C*) reaches 1468.90 m/s and specific impulse (Isp) 138.16 s near the optimal ROF, while still maintaining 87.8% efficiency at the extreme ROF 1000 limit. The result combines monopropellant safety with bipropellant performance in a low-power architecture suited to microsatellites.",
@@ -67,7 +70,7 @@ export const publications: Publication[] = [
     venue: "Fuel",
     doi: "10.1016/j.fuel.2025.136893",
     url: "https://doi.org/10.1016/j.fuel.2025.136893",
-    thumbnailUrl: "/papers/pub-2.png",
+    paperImageUrl: "/papers/pub-2-paper.png",
     category: "chemical",
   },
   {
@@ -79,6 +82,7 @@ export const publications: Publication[] = [
     venue: "Lab on a Chip",
     doi: "10.1039/D4LC00516C",
     url: "https://doi.org/10.1039/D4LC00516C",
+    paperImageUrl: "/papers/pub-3-paper.png",
     category: "chemical",
     note: "Selected as inside front cover",
     highlight: true,
@@ -117,7 +121,7 @@ export const publications: Publication[] = [
     venue: "Sensors and Actuators A: Physical",
     doi: "10.1016/j.sna.2024.115347",
     url: "https://doi.org/10.1016/j.sna.2024.115347",
-    thumbnailUrl: "/papers/pub-4.png",
+    paperImageUrl: "/papers/pub-4-paper.png",
     category: "chemical",
   },
   {
@@ -129,7 +133,7 @@ export const publications: Publication[] = [
     venue: "Acta Astronautica",
     doi: "10.1016/j.actaastro.2024.03.012",
     url: "https://doi.org/10.1016/j.actaastro.2024.03.012",
-    thumbnailUrl: "/papers/pub-5.png",
+    paperImageUrl: "/papers/pub-5-paper.png",
     category: "chemical",
   },
   {
@@ -141,7 +145,7 @@ export const publications: Publication[] = [
     venue: "Sensors and Actuators A: Physical",
     doi: "10.1016/j.sna.2023.114738",
     url: "https://doi.org/10.1016/j.sna.2023.114738",
-    thumbnailUrl: "/papers/pub-6.png",
+    paperImageUrl: "/papers/pub-6-paper.png",
     category: "chemical",
   },
   {
@@ -153,7 +157,7 @@ export const publications: Publication[] = [
     venue: "Sensors and Actuators A: Physical",
     doi: "10.1016/j.sna.2023.114696",
     url: "https://doi.org/10.1016/j.sna.2023.114696",
-    thumbnailUrl: "/papers/pub-7.png",
+    paperImageUrl: "/papers/pub-7-paper.png",
     category: "chemical",
   },
   {
@@ -177,7 +181,7 @@ export const publications: Publication[] = [
     venue: "Virtual and Physical Prototyping",
     doi: "10.1080/17452759.2026.2653924",
     url: "https://doi.org/10.1080/17452759.2026.2653924",
-    thumbnailUrl: "/papers/pub-9.png",
+    paperImageUrl: "/papers/pub-9-paper.png",
     category: "hybrid",
   },
   {
@@ -189,7 +193,7 @@ export const publications: Publication[] = [
     venue: "Advances in Space Research",
     doi: "10.1016/j.asr.2026.01.005",
     url: "https://doi.org/10.1016/j.asr.2026.01.005",
-    thumbnailUrl: "/papers/pub-10.png",
+    paperImageUrl: "/papers/pub-10-paper.png",
     category: "hybrid",
   },
   {
@@ -205,6 +209,7 @@ export const publications: Publication[] = [
     category: "hybrid",
     highlight: true,
     thumbnailUrl: "/papers/pub-11.png",
+    paperImageUrl: "/papers/pub-11-paper.png",
     slug: "ti-microthruster-lpbf-2025",
     summary:
       "Laser powder bed fusion (LPBF) of Ti-6Al-4V is pushed to a sub-millimeter regime to produce thin-walled microthrusters with previously inaccessible geometric fidelity. Decomposition chambers with 0.5 mm walls and Ø180 μm injector orifices are printed at 99.95% relative density and ±4.1% dimensional tolerance, surpassing what conventional precision machining can deliver at this scale. The same hardware sustains 60 s of continuous operation at 700 °C without cracking or deformation, retains 181 MPa tensile strength at temperature, and reaches 84.3% C* efficiency / 91.7% Isp efficiency. With a thrust-to-weight ratio of 4.45 — about 2.5× higher than commercial sub-Newton thrusters in the same class — the work shows that LPBF can directly fabricate flight-grade Ti-6Al-4V microthrusters that are simultaneously light, robust, and high-performing.",
@@ -235,6 +240,7 @@ export const publications: Publication[] = [
     category: "hybrid",
     highlight: true,
     thumbnailUrl: "/papers/pub-12.png",
+    paperImageUrl: "/papers/pub-12-paper.png",
     slug: "h2o2-rga-aiaa-2025",
     summary:
       "A green monopropellant thruster gains a second energy input — rotating gliding arc (RGA) plasma — that lifts its performance ceiling without changing the propellant. Hydrogen peroxide is first decomposed over a manganese-oxide catalyst (MnOₓ/Al₂O₃, 26.0% Mn doping, 70.63 m²/g surface area), and the hot decomposition gas then passes through an AC 20 kHz RGA discharge that adds electrical energy on top of the chemical heat release. Across multiple inlet pressures (5.0–6.0 bar), chamber pressure rises by 43.6–44.8% and characteristic velocity roughly doubles (217 → 448 m/s) compared with catalytic-only operation, while the thruster sustains 40 s of continuous burn at ~1.25 kW. The hybrid concept opens a route to in-flight thrust modulation — by simply throttling plasma power on a fixed propellant — without the propellant logistics of a bipropellant system.",
@@ -262,7 +268,7 @@ export const publications: Publication[] = [
     venue: "Advances in Space Research",
     doi: "10.1016/j.asr.2025.01.063",
     url: "https://doi.org/10.1016/j.asr.2025.01.063",
-    thumbnailUrl: "/papers/pub-13.png",
+    paperImageUrl: "/papers/pub-13-paper.png",
     category: "hybrid",
   },
   {
@@ -288,6 +294,7 @@ export const publications: Publication[] = [
     category: "photonics",
     highlight: true,
     thumbnailUrl: "/papers/pub-15.png",
+    paperImageUrl: "/papers/pub-15-paper.png",
     slug: "wrinkling-trilayers-2026",
     summary:
       "Pre-stretching introduces an extra geometric degree of freedom into the classical thin-film–on–soft-substrate wrinkling problem. By placing a thin film between two pre-stretched soft substrates and then releasing the system, this work measures and predicts how the wrinkle wavelength and amplitude evolve as functions of pre-stretch and modulus mismatch. Experiments and theory together map a phase space in which the trilayer's morphology can be tuned by stretch alone — decoupling wavelength from substrate stiffness in regimes that bilayer systems cannot reach. The result is a useful design lever for stretchable circuitry, optical metamaterials, and thin-film mechanics in general.",
@@ -318,6 +325,7 @@ export const publications: Publication[] = [
     category: "photonics",
     highlight: true,
     thumbnailUrl: "/papers/pub-16.png",
+    paperImageUrl: "/papers/pub-16-paper.png",
     slug: "spherical-shell-buckling-2024",
     summary:
       "The classical view that geometric imperfections always lower the buckling load of a clamped spherical shell turns out to be incomplete. By introducing precisely controlled Gaussian-profile dimples into elastomeric (VPS) hemispherical shells across a range of shallowness (R/t = 30–80) and varying defect depth and width, this study shows that the knockdown factor is non-monotonic in shallowness — and that, in the right regime, certain defect placements actually stabilize rather than destabilize the structure. Three-dimensional finite-element analysis traces the underlying physics to a bifurcation from axisymmetric to non-axisymmetric buckling modes. The work reframes how engineers can think about pressure-vessel design: imperfections are not always penalties, and the standard 2D-axisymmetric analyses systematically over-predict buckling loads in the shallow regime.",

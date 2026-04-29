@@ -11,9 +11,11 @@ import {
 import type { Metadata } from "next";
 
 const publicationsMarqueeItems = publications
-  .filter((p) => p.thumbnailUrl)
+  .filter((p) => p.paperImageUrl)
+  .slice()
+  .sort((a, b) => b.year - a.year)
   .map((p) => ({
-    image: p.thumbnailUrl!,
+    image: p.paperImageUrl!,
     alt: p.title,
     title: p.title,
     meta: `${p.venue} (${p.year})`,
@@ -33,7 +35,7 @@ export default function PublicationsPage() {
         eyebrow="Publications"
         title="International journal publications"
         description={
-          "16 SCIE papers across three thrust areas. * Equal contribution; † Corresponding author."
+          "16 SCIE papers (14 as first author) across three thrust areas. * Equal contribution; † Corresponding author."
         }
       />
 

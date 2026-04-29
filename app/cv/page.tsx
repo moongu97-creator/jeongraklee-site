@@ -45,7 +45,8 @@ export default function CVPage() {
                 Postdoctoral Researcher at Pohang University of Science and Technology (POSTECH)
               </p>
               <p className="text-base font-semibold leading-snug text-brand-primary md:text-lg">
-                Center for Advanced Aerospace Materials, GIFT
+                Center for Advanced Aerospace Materials, Graduate Institute of
+                Ferrous and Eco-Materials Technology (GIFT)
               </p>
 
               <dl className="mt-6 space-y-2 text-sm md:text-base">
