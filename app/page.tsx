@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/hero";
 import { Section } from "@/components/section";
+import { CoverCarousel } from "@/components/cover-carousel";
 import { ResearchAreaCard } from "@/components/research-area-card";
 import { PublicationCard } from "@/components/publication-card";
 import { researchAreas } from "@/data/research";
@@ -19,30 +20,24 @@ export default function HomePage() {
       <Section
         eyebrow="Research at a glance"
         title="A roadmap of next-generation propulsion"
-        description="One framework spanning chemical (now), plasma-hybrid (near term), and photonic-structural (long term) propulsion — three horizons unified by additive manufacturing, plasma actuation, and predictive thin-film mechanics. Each horizon targets a different mission timescale and technology readiness level, but all build on the same engineering toolkit."
       >
-        <figure className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-tag-chemical/15 via-tag-hybrid/15 to-tag-photonics/15">
-          <div className="aspect-[16/9] w-full">
-            <div className="grid h-full place-items-center text-center">
-              <div className="px-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                  Diagram placeholder
-                </p>
-                <p className="mt-3 font-heading text-base font-semibold text-foreground/85 md:text-lg">
-                  Research overview & roadmap diagram
-                </p>
-                <p className="mt-2 max-w-md text-xs italic text-muted-foreground md:text-sm">
-                  Replace with a 16:9 SVG/PNG at{" "}
-                  <code className="font-mono">public/research-overview.png</code>
-                </p>
-              </div>
-            </div>
-          </div>
-        </figure>
-        <p className="mt-3 text-center text-xs italic text-muted-foreground md:text-sm">
-          Figure 1. Roadmap connecting three propulsion horizons across mission
-          timescales and technology readiness.
-        </p>
+        <div className="mb-8 max-w-5xl space-y-3">
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+            One framework spanning chemical (now), plasma-hybrid (near term),
+            and photonic-structural (long term) propulsion — connected by
+            additive manufacturing, plasma actuation, and predictive thin-film
+            mechanics.
+          </p>
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+            Each horizon pairs with the enabling technology that brings it to
+            flight: additive manufacturing scales chemical micro-thrusters from
+            prototype to constellation, plasma actuation drives the rotating
+            gliding arc thruster at the heart of near-term in-space mobility,
+            and predictive thin-film mechanics underpins the lightweight
+            active-structure sails of photonic-structural propulsion.
+          </p>
+        </div>
+        <CoverCarousel />
       </Section>
 
       <Section
