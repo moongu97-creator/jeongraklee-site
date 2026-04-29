@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 import { TimelineEntry } from "@/components/timeline-entry";
+import { CvTimeline } from "@/components/cv-timeline";
 import { PublicationCard } from "@/components/publication-card";
 import { profile } from "@/data/profile";
 import { education } from "@/data/education";
@@ -96,6 +97,10 @@ export default function CVPage() {
           </div>
         </Container>
       </section>
+
+      <Container className="pb-8 md:pb-10">
+        <CvTimeline />
+      </Container>
 
       <Section eyebrow="Education" title="Education">
         {education.map((e, i) => (

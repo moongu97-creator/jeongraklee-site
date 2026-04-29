@@ -21,8 +21,7 @@ export default function HomePage() {
         eyebrow="Research at a glance"
         title="A roadmap of next-generation propulsion"
       >
-        <CoverCarousel />
-        <p className="mt-6 text-sm leading-relaxed text-muted-foreground md:text-base">
+        <p className="mb-8 text-sm leading-relaxed text-muted-foreground md:text-base">
           One framework spans chemical (now), plasma-hybrid (near term), and
           photonic-structural (long term) propulsion. Chemical advances
           today&apos;s thrusters for CubeSats and constellations,
@@ -32,6 +31,7 @@ export default function HomePage() {
           sails open propellantless light-pressure propulsion on
           active-structure thin films for sustained long-range cruise.
         </p>
+        <CoverCarousel />
       </Section>
 
       <Section
