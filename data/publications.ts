@@ -13,6 +13,8 @@ export type Publication = {
   highlight?: boolean;
   myIndex?: number;
   thumbnailUrl?: string;
+  /** Issue cover image (e.g. journal front/inside-front cover) */
+  coverUrl?: string;
   slug?: string;
   /** Single-paragraph narrative — gap, approach, significance flowing together */
   summary?: string;

@@ -7,6 +7,7 @@ import { Section } from "@/components/section";
 import { CategoryTag } from "@/components/tag";
 import { HighlightAuthor } from "@/components/highlight-author";
 import { publications } from "@/data/publications";
+import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -95,31 +96,57 @@ export default async function PublicationDetailPage({
         )}
       </Container>
 
-      {pub.thumbnailUrl && (
+      {(pub.thumbnailUrl || pub.coverUrl) && (
         <Section>
-          <figure className="mx-auto max-w-3xl">
-            <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
-              <div className="relative aspect-[1000/538]">
-                <Image
-                  src={pub.thumbnailUrl}
-                  alt={`Graphical abstract — ${pub.title}`}
-                  fill
-                  sizes="(min-width: 768px) 768px, 100vw"
-                  className="object-contain"
-                  priority
-                />
-              </div>
-            </div>
-            <figcaption className="mx-auto mt-3 max-w-2xl text-center text-xs italic text-muted-foreground md:text-sm">
-              Graphical abstract.
-            </figcaption>
-          </figure>
+          <div
+            className={cn(
+              "mx-auto grid gap-6",
+              pub.coverUrl && pub.thumbnailUrl
+                ? "max-w-5xl md:grid-cols-[1.6fr_1fr]"
+                : "max-w-3xl",
+            )}
+          >
+            {pub.thumbnailUrl && (
+              <figure>
+                <div className="relative overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+                  <div className="relative aspect-[1000/538]">
+                    <Image
+                      src={pub.thumbnailUrl}
+                      alt={`Graphical abstract — ${pub.title}`}
+                      fill
+                      sizes="(min-width: 768px) 640px, 100vw"
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                </div>
+              </figure>
+            )}
+            {pub.coverUrl && (
+              <figure>
+                <div className="relative overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+                  <div className="relative aspect-[3/4]">
+                    <Image
+                      src={pub.coverUrl}
+                      alt={`${pub.venue} cover`}
+                      fill
+                      sizes="(min-width: 768px) 380px, 100vw"
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+                <figcaption className="mt-2 text-center text-[11px] italic text-muted-foreground md:text-xs">
+                  {pub.venue} {pub.year} — {pub.note ?? "Issue cover"}
+                </figcaption>
+              </figure>
+            )}
+          </div>
         </Section>
       )}
 
       {pub.summary && (
         <Section eyebrow="Summary" title="About this paper">
-          <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
             {pub.summary}
           </p>
         </Section>
@@ -127,7 +154,7 @@ export default async function PublicationDetailPage({
 
       {pub.highlights && pub.highlights.length > 0 && (
         <Section eyebrow="Key results" title="Headline numbers">
-          <ul className="max-w-3xl space-y-3">
+          <ul className="space-y-3">
             {pub.highlights.map((h, i) => (
               <li
                 key={i}
@@ -142,20 +169,20 @@ export default async function PublicationDetailPage({
 
       {pub.figures && pub.figures.length > 0 && (
         <Section eyebrow="Figures" title="Selected figures">
-          <div className="space-y-12">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-10">
             {pub.figures.map((f, i) => (
-              <figure key={i} className="mx-auto max-w-3xl">
+              <figure key={i}>
                 <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
                   <Image
                     src={f.src}
                     alt={f.alt}
                     width={1400}
                     height={1000}
-                    sizes="(min-width: 768px) 768px, 100vw"
+                    sizes="(min-width: 768px) 50vw, 100vw"
                     className="h-auto w-full object-contain"
                   />
                 </div>
-                <figcaption className="mx-auto mt-3 max-w-2xl text-center text-xs leading-relaxed italic text-muted-foreground md:text-sm">
+                <figcaption className="mt-3 text-xs leading-relaxed italic text-muted-foreground md:text-sm">
                   {f.caption}
                 </figcaption>
               </figure>
