@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/page-header";
 import { Section } from "@/components/section";
+import { MediaMarquee } from "@/components/media-marquee";
 import { media } from "@/data/media";
 import { Newspaper, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
@@ -19,7 +20,9 @@ export default function MediaPage() {
         description="Selected press coverage of major research milestones, awards, and interviews — KBS, MBC, Forbes Korea, Yonhap News, Dong-A Science, and others."
       />
 
-      <Section className="pt-0">
+      <MediaMarquee items={media} />
+
+      <Section className="pt-4">
         <ol className="space-y-5">
           {media.map((m) => (
             <li

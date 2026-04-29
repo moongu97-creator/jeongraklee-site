@@ -8,6 +8,7 @@ export type MediaItem = {
   title: string;
   outlets?: MediaOutlet[];
   date: string;
+  image?: string;
 };
 
 export const media: MediaItem[] = [
@@ -15,18 +16,14 @@ export const media: MediaItem[] = [
     number: 1,
     title:
       'KBS Pohang Radio "Lively Morning Citizen Square" — Artemis 2 mission commentary',
-    outlets: [
-      {
-        name: "YouTube clip",
-        url: "https://www.youtube.com/watch?v=Nfbzymt-IlI",
-      },
-    ],
+    outlets: [{ name: "KBS Pohang Radio" }],
     date: "April 2026",
   },
   {
     number: 2,
     title:
       "Air-breathing electric propulsion at atmospheric pressure (Pub #10, ASR 2026)",
+    image: "/media/youtube-airbreathing.jpg",
     outlets: [
       {
         name: "YTN Science",
@@ -55,6 +52,7 @@ export const media: MediaItem[] = [
     number: 3,
     title:
       "Highly stretchable electrodes via wrinkle structures (Pub #15, IJMS 2026)",
+    image: "/media/etnews.jpg",
     outlets: [
       {
         name: "Veritas Alpha",
@@ -74,6 +72,7 @@ export const media: MediaItem[] = [
   {
     number: 4,
     title: "Forbes Korea 30 Under 30 — Science Category",
+    image: "/media/forbes.jpg",
     outlets: [
       {
         name: "Forbes Korea (Feature)",
@@ -89,6 +88,7 @@ export const media: MediaItem[] = [
   {
     number: 5,
     title: "N₂O/CH₄ green storable bipropellant (Pub #1, AST 2026)",
+    image: "/media/dongasci-n2och4.jpg",
     outlets: [
       {
         name: "Dong-A Science",
@@ -108,6 +108,7 @@ export const media: MediaItem[] = [
   {
     number: 6,
     title: "N₂O/NH₃ green storable bipropellant (Pub #2, Fuel)",
+    image: "/media/chosun-biz-n2onh3.jpg",
     outlets: [
       {
         name: "Dong-A Science",
@@ -124,6 +125,7 @@ export const media: MediaItem[] = [
     number: 7,
     title:
       "Ultra-light thin-walled Ti-6Al-4V microthrusters (Pub #11, VPP 2025)",
+    image: "/media/yonhap-microthruster.jpg",
     outlets: [
       {
         name: "Yonhap News",
@@ -140,8 +142,9 @@ export const media: MediaItem[] = [
     number: 8,
     title:
       'Pohang MBC "Tok-Tok Donghaein" — Featured interview "Toward Space for the Expansion of Human Frontiers"',
+    image: "/media/youtube-toktok.jpg",
     outlets: [
-      { name: "YouTube", url: "https://youtu.be/Phfb95JQNwA" },
+      { name: "YouTube", url: "https://www.youtube.com/watch?v=Nfbzymt-IlI" },
     ],
     date: "July 2024",
   },
@@ -149,6 +152,7 @@ export const media: MediaItem[] = [
     number: 9,
     title:
       "KAI Aerospace Paper Contest — Excellence Paper Award (2022 and 2024)",
+    image: "/media/news4000-kai.jpg",
     outlets: [
       {
         name: "News4000 (2024)",
@@ -164,6 +168,7 @@ export const media: MediaItem[] = [
   {
     number: 10,
     title: "Mueunjae Award — POSTECH highest graduation honor",
+    image: "/media/postech-mueunjae.jpg",
     outlets: [
       {
         name: "POSTECH Times",
@@ -176,6 +181,7 @@ export const media: MediaItem[] = [
     number: 11,
     title:
       "NAEK Next-Generation Engineering Leader Award — Highest Honor",
+    image: "/media/yonhap-naek.jpg",
     outlets: [
       {
         name: "Yonhap News",
