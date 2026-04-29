@@ -13,6 +13,11 @@ export type Publication = {
   highlight?: boolean;
   myIndex?: number;
   thumbnailUrl?: string;
+  slug?: string;
+  abstract?: string;
+  abstractKo?: string;
+  highlights?: string[];
+  videoUrl?: string;
 };
 
 export const publications: Publication[] = [
@@ -52,6 +57,15 @@ export const publications: Publication[] = [
     note: "Selected as inside front cover",
     highlight: true,
     thumbnailUrl: "/papers/pub-3.png",
+    slug: "lab-on-chip-multimode-2024",
+    abstract:
+      "In the realm of nano/microsatellite clustering, the demand for microthrusters is steadily growing. Solid propellant microthrusters, recognized for their lightweight build and structural simplicity, carry significant commercial promise. However, existing solid propellant microthrusters manufactured using MEMS technology encounter notable issues such as inconsistent thrust generation positions, limited thrust profiles, and issues related to productivity, scalability, and durability. In this study, we propose a novel shared-chamber solid-propellant microthruster design that consistently produces thrust at a designated position and accommodates multiple thrust modes. The components and fabrication of this thruster were developed using lab-on-printed-circuit-board (PCB) technology and PCB surface mount technology, showcasing enhanced structural stability, scalability, and potential for mass production. Our ignition and combustion experiments confirmed the repeatability of the unit operation, a fundamental feature of this innovative microthruster. Furthermore, we successfully implemented and evaluated the power mode for increased thrust and the continuous mode for prolonged operational duration. Integrating the lab-on-PCB-based shared-chamber solid propellant microthruster with propulsion and electronic control systems holds promising potential for future satellite missions.",
+    highlights: [
+      "Shared-chamber design produces thrust at a fixed position across all firings — eliminates the position-drift issue of conventional MEMS solid-propellant arrays.",
+      "Three operating modes on a single device: Sequential (1→4), Power (1+3, 2+4), and Continuous (1+2+3+4) — single hardware, multi-mission flexibility.",
+      "Manufactured via Lab-on-PCB + PCB surface-mount technology — scalable to mass production with standard PCB lines.",
+      "Ignition repeatability validated; structural stability confirmed across all modes.",
+    ],
   },
   {
     number: 4,

@@ -1,24 +1,27 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Publication } from "@/data/publications";
 import { CategoryTag } from "@/components/tag";
 import { HighlightAuthor } from "@/components/highlight-author";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function PublicationCard({
   pub,
   compact = false,
+  withThumbnail = false,
 }: {
   pub: Publication;
   compact?: boolean;
+  withThumbnail?: boolean;
 }) {
-  return (
-    <article
-      className={cn(
-        "group flex gap-4 border-b border-border py-5 last:border-b-0",
-        !compact && "md:gap-6",
-      )}
-    >
+  const showThumbnail = withThumbnail && !compact && Boolean(pub.thumbnailUrl);
+  const internalHref = pub.slug ? `/publications/${pub.slug}` : null;
+  const externalHref = pub.url ?? null;
+  const hasInteractiveCard = Boolean(internalHref || externalHref);
+
+  const cardInner = (
+    <>
       <div className="hidden shrink-0 pt-1 text-right md:block md:w-12">
         <span className="font-mono text-xs text-muted-foreground">
           {String(pub.number).padStart(2, "0")}
@@ -34,19 +37,8 @@ export function PublicationCard({
             </span>
           )}
         </div>
-        <h3 className="mt-2 font-heading text-base font-semibold leading-snug text-foreground md:text-lg">
-          {pub.url ? (
-            <a
-              href={pub.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-brand-primary"
-            >
-              {pub.title}
-            </a>
-          ) : (
-            pub.title
-          )}
+        <h3 className="mt-2 font-heading text-base font-semibold leading-snug text-foreground transition-colors group-hover:text-brand-primary md:text-lg">
+          {pub.title}
         </h3>
         <p className="mt-1.5 text-sm text-muted-foreground">
           <span className="text-foreground/80">
@@ -55,38 +47,56 @@ export function PublicationCard({
         </p>
         <p className="mt-1 flex items-center gap-2 text-sm">
           <em className="not-italic font-medium text-foreground">{pub.venue}</em>
-          {pub.url && (
-            <a
-              href={pub.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open DOI link"
-              className="inline-flex items-center text-muted-foreground transition-colors hover:text-brand-primary"
-            >
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-          )}
+          {internalHref ? (
+            <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-colors group-hover:text-brand-primary" />
+          ) : externalHref ? (
+            <ExternalLink className="h-3.5 w-3.5 text-muted-foreground transition-colors group-hover:text-brand-primary" />
+          ) : null}
         </p>
       </div>
-      {pub.thumbnailUrl && !compact && (
-        <a
-          href={pub.url ?? "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden shrink-0 md:block"
-          aria-label={`Figure for ${pub.title}`}
-        >
-          <div className="relative aspect-[1000/538] w-52 overflow-hidden rounded-lg border border-border bg-white transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md">
+      {showThumbnail && (
+        <div className="hidden shrink-0 md:block">
+          <div className="relative aspect-[1000/538] w-52 overflow-hidden rounded-lg border border-border bg-white">
             <Image
-              src={pub.thumbnailUrl}
+              src={pub.thumbnailUrl as string}
               alt={`Figure for ${pub.title}`}
               fill
               sizes="208px"
               className="object-contain"
             />
           </div>
-        </a>
+        </div>
       )}
-    </article>
+    </>
   );
+
+  const cardClass = cn(
+    "group flex gap-4 border-b border-border py-5 last:border-b-0",
+    !compact && "md:gap-6",
+    hasInteractiveCard &&
+      "transition duration-200 hover:-translate-y-0.5 hover:bg-foreground/[0.015] hover:shadow-sm motion-reduce:transition-none",
+  );
+
+  if (internalHref) {
+    return (
+      <Link href={internalHref} className={cn(cardClass, "no-underline")}>
+        {cardInner}
+      </Link>
+    );
+  }
+
+  if (externalHref) {
+    return (
+      <a
+        href={externalHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(cardClass, "no-underline")}
+      >
+        {cardInner}
+      </a>
+    );
+  }
+
+  return <article className={cardClass}>{cardInner}</article>;
 }

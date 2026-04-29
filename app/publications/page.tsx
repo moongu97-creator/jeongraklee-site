@@ -31,7 +31,7 @@ export default function PublicationsPage() {
         description="MEMS-based monopropellant micro-thrusters and Lab-on-PCB propellant validation platforms for CubeSats and constellations."
       >
         {publicationsByCategory.chemical.map((p) => (
-          <PublicationCard key={p.number} pub={p} />
+          <PublicationCard key={p.number} pub={p} withThumbnail />
         ))}
       </Section>
 
@@ -41,7 +41,7 @@ export default function PublicationsPage() {
         description="Rotating Gliding Arc plasma-assisted propulsion targeting high-thrust, high-Isp regimes for orbital transfer vehicles and kick stages."
       >
         {publicationsByCategory.hybrid.map((p) => (
-          <PublicationCard key={p.number} pub={p} />
+          <PublicationCard key={p.number} pub={p} withThumbnail />
         ))}
       </Section>
 
@@ -51,7 +51,7 @@ export default function PublicationsPage() {
         description="Light/solar sails enabled by thin-film actuators integrated with optical metasurfaces; predictive mechanics of wrinkling, buckling, and large deformation."
       >
         {publicationsByCategory.photonics.map((p) => (
-          <PublicationCard key={p.number} pub={p} />
+          <PublicationCard key={p.number} pub={p} withThumbnail />
         ))}
       </Section>
 
