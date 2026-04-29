@@ -64,6 +64,7 @@ export const publications: Publication[] = [
     note: "Selected as inside front cover",
     highlight: true,
     thumbnailUrl: "/papers/pub-3.png",
+    coverUrl: "/papers/pub-3-cover.png",
     slug: "lab-on-chip-multimode-2024",
     summary:
       "Earlier Lab-on-PCB solid-propellant microthruster (SPMT) arrays fired each chamber segment only once, and the thrust origin shifted between firings — limiting both repeatability and thrust-profile flexibility. Here, multiple solid-propellant cartridges share a single combustion chamber and nozzle, separated by membranes that rupture at ignition. By changing the cartridge ignition pattern, the same hardware runs three modes — Sequential, Power, and Continuous — covering both high-thrust orbital maneuvers and low-thrust attitude holding. Manufactured with standard Lab-on-PCB and surface-mount processes, the device keeps the scalability and mass-production compatibility of the platform while bridging the gap between research demonstrators and operational small-satellite hardware.",
