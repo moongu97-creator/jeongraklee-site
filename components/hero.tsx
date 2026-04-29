@@ -12,7 +12,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_60%_at_50%_0%,color-mix(in_oklab,var(--brand-primary)_18%,transparent)_0%,transparent_70%)]"
       />
       <Container className="pt-16 pb-14 md:pt-24 md:pb-20">
-        <div className="grid items-start gap-10 md:grid-cols-[1fr_280px] md:gap-14">
+        <div className="grid items-stretch gap-10 md:grid-cols-[1fr_320px] md:gap-12">
           <div>
             <p className="mb-4 text-xs font-mono uppercase tracking-[0.2em] text-brand-primary">
               {profile.title} · {profile.shortAffiliation}
@@ -20,10 +20,10 @@ export function Hero() {
             <h1 className="font-heading text-4xl font-bold leading-[1.05] tracking-tight text-foreground md:text-6xl">
               {profile.name}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
               {profile.tagline}
             </p>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
               {profile.bio}
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -58,12 +58,12 @@ export function Hero() {
             </div>
           </div>
           <div className="order-first md:order-last">
-            <div className="relative aspect-[2/3] w-44 overflow-hidden rounded-2xl border border-border bg-card md:w-full">
+            <div className="relative aspect-[2/3] w-44 overflow-hidden rounded-2xl border border-border bg-card md:aspect-auto md:h-full md:w-full">
               <Image
                 src={profile.portraitUrl}
                 alt={`Portrait of ${profile.name}`}
                 fill
-                sizes="(min-width: 768px) 280px, 176px"
+                sizes="(min-width: 768px) 320px, 176px"
                 className="object-cover"
                 priority
               />
