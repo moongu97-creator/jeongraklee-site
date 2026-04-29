@@ -43,7 +43,7 @@ export function Navbar() {
           : "border-b border-transparent bg-background/0",
       )}
     >
-      <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-6 lg:px-12">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 lg:px-12">
         <Link
           href="/"
           className="font-heading text-xl font-bold tracking-tight text-foreground transition-colors hover:text-brand-primary"
@@ -90,7 +90,7 @@ export function Navbar() {
 
       {mobileOpen && (
         <div className="border-t border-border bg-background lg:hidden">
-          <nav className="mx-auto flex w-full max-w-5xl flex-col gap-1 px-6 py-4">
+          <nav className="mx-auto flex w-full max-w-6xl flex-col gap-1 px-6 py-4">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
