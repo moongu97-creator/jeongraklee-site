@@ -67,20 +67,20 @@ export function Hero() {
               </a>
             </div>
           </div>
-          <aside className="md:order-last">
-            <div className="flex h-full flex-col rounded-2xl border border-border bg-card/60 p-6 md:p-7">
-              <p className="mb-5 text-[10px] font-mono uppercase tracking-[0.22em] text-brand-primary">
+          <aside className="md:order-last md:h-full">
+            <div className="flex h-full flex-col rounded-2xl border border-border bg-card/60 p-5 md:p-6">
+              <p className="mb-3 text-[10px] font-mono uppercase tracking-[0.22em] text-brand-primary">
                 Highlights
               </p>
-              <ul className="flex flex-1 flex-col justify-between gap-5">
+              <ul className="flex flex-1 flex-col justify-between gap-3">
                 {profile.highlights.map((item, i) => {
                   const Icon = highlightIcons[i] ?? Sparkles;
                   return (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex h-9 w-9 flex-none items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span className="text-sm leading-snug text-foreground md:text-[15px]">
+                      <span className="text-sm leading-snug text-foreground">
                         {item}
                       </span>
                     </li>
