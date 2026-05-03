@@ -1,8 +1,18 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Mail, FileText, BookOpen, ArrowRight } from "lucide-react";
+import {
+  Mail,
+  FileText,
+  BookOpen,
+  ArrowRight,
+  Award,
+  Sparkles,
+  Rocket,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { profile } from "@/data/profile";
 import { Container } from "@/components/container";
+
+const highlightIcons: LucideIcon[] = [Award, Sparkles, BookOpen, Rocket];
 
 export function Hero() {
   return (
@@ -12,7 +22,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_60%_at_50%_0%,color-mix(in_oklab,var(--brand-primary)_18%,transparent)_0%,transparent_70%)]"
       />
       <Container className="pt-16 pb-8 md:pt-24 md:pb-10">
-        <div className="grid items-center gap-10 md:grid-cols-[1fr_320px] md:gap-12">
+        <div className="grid items-stretch gap-10 md:grid-cols-[1.35fr_1fr] md:gap-12">
           <div>
             <p className="mb-4 text-xs font-mono uppercase tracking-[0.2em] text-brand-primary">
               {profile.title} · {profile.shortAffiliation}
@@ -23,19 +33,9 @@ export function Hero() {
             <p className="mt-6 font-heading text-lg leading-snug text-foreground md:text-2xl">
               {profile.tagline}
             </p>
-            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground md:text-base">
               {profile.bio}
             </p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {profile.highlights.map((item) => (
-                <li
-                  key={item}
-                  className="inline-flex items-center rounded-full border border-border bg-foreground/5 px-3 py-1 text-xs font-medium text-foreground/80 md:text-sm"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <Link
                 href="/research"
@@ -67,18 +67,28 @@ export function Hero() {
               </a>
             </div>
           </div>
-          <div className="order-first md:order-last">
-            <div className="relative aspect-[2/3] w-44 overflow-hidden rounded-2xl border border-border bg-card md:aspect-auto md:h-full md:w-full">
-              <Image
-                src={profile.portraitUrl}
-                alt={`Portrait of ${profile.name}`}
-                fill
-                sizes="(min-width: 768px) 320px, 176px"
-                className="object-cover"
-                priority
-              />
+          <aside className="md:order-last">
+            <div className="flex h-full flex-col rounded-2xl border border-border bg-card/60 p-6 md:p-7">
+              <p className="mb-5 text-[10px] font-mono uppercase tracking-[0.22em] text-brand-primary">
+                Highlights
+              </p>
+              <ul className="flex flex-1 flex-col justify-between gap-5">
+                {profile.highlights.map((item, i) => {
+                  const Icon = highlightIcons[i] ?? Sparkles;
+                  return (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-flex h-9 w-9 flex-none items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <span className="text-sm leading-snug text-foreground md:text-[15px]">
+                        {item}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
-          </div>
+          </aside>
         </div>
       </Container>
     </section>
