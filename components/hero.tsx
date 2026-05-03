@@ -12,7 +12,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_60%_at_50%_0%,color-mix(in_oklab,var(--brand-primary)_18%,transparent)_0%,transparent_70%)]"
       />
       <Container className="pt-16 pb-8 md:pt-24 md:pb-10">
-        <div className="grid items-stretch gap-10 md:grid-cols-[1fr_320px] md:gap-12">
+        <div className="grid items-center gap-10 md:grid-cols-[1fr_320px] md:gap-12">
           <div>
             <p className="mb-4 text-xs font-mono uppercase tracking-[0.2em] text-brand-primary">
               {profile.title} · {profile.shortAffiliation}
@@ -20,12 +20,22 @@ export function Hero() {
             <h1 className="font-heading text-4xl font-bold leading-[1.05] tracking-tight text-foreground md:text-6xl">
               {profile.name}
             </h1>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="mt-6 font-heading text-lg leading-snug text-foreground md:text-2xl">
               {profile.tagline}
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
               {profile.bio}
             </p>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {profile.highlights.map((item) => (
+                <li
+                  key={item}
+                  className="inline-flex items-center rounded-full border border-border bg-foreground/5 px-3 py-1 text-xs font-medium text-foreground/80 md:text-sm"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <Link
                 href="/research"
