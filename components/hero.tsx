@@ -41,8 +41,8 @@ export function Hero() {
               {profile.highlights.map((item, i) => {
                 const Icon = highlightIcons[i] ?? Sparkles;
                 return (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <span className="mt-0.5 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary">
+                  <li key={item} className="flex items-center gap-2.5">
+                    <span className="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary">
                       <Icon className="h-3 w-3" />
                     </span>
                     <span className="text-xs leading-tight text-foreground">
