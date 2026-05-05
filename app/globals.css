@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -54,8 +55,11 @@
   --color-tag-hybrid: var(--tag-hybrid);
   --color-tag-photonics: var(--tag-photonics);
   --color-tag-other: var(--tag-other);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-manrope), var(--font-inter), ui-sans-serif,
+  --font-sans: var(--font-inter), "Pretendard Variable", Pretendard,
+    "Apple SD Gothic Neo", "Malgun Gothic", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-heading: var(--font-manrope), "Pretendard Variable", Pretendard,
+    "Apple SD Gothic Neo", "Malgun Gothic", var(--font-inter), ui-sans-serif,
     system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo,
     monospace;

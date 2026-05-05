@@ -16,7 +16,7 @@ export const researchDetails: Record<ResearchAreaTag, ResearchDetail> = {
     longDescription:
       "MEMS-based monopropellant micro-thrusters and Lab-on-PCB propellant validation platforms take CubeSat and constellation propulsion from the lab bench to orbit today. By co-fabricating ignitor, combustion chamber, and structural support on a single PCB substrate, the entire propulsion module becomes scalable, reproducible, and mass-manufacturable — closing the gap between research-grade demonstrators and operational small-satellite hardware.",
     longDescriptionKo:
-      "MEMS 기반 단일액체 추진제 마이크로 추력기와 Lab-on-PCB 추진제 검증 플랫폼은 큐브샛과 위성군 추진을 실험실 수준에서 궤도 운용 수준까지 끌어올립니다. 점화기·연소실·구조 지지부를 단일 PCB 기판 위에 동시 제작함으로써 전체 추진 모듈이 확장 가능·재현 가능·양산 호환 구조가 되고, 연구용 시연체와 실 운용 소형 위성 하드웨어 사이의 격차를 메웁니다.",
+      "MEMS 단일추진제 마이크로 추력기와 Lab-on-PCB 추진제 검증 플랫폼으로 큐브샛·위성군의 추진 시스템을 실험실 시연에서 궤도 운용까지 끌고 갑니다. 점화기·연소실·구조 지지부를 하나의 PCB 기판에 함께 만들기 때문에 추진 모듈 전체가 양산 가능한 구조로 정리됩니다. 연구용 시연체와 실 운용 소형 위성 하드웨어 사이의 거리를 한 단계 좁히는 접근입니다.",
     pillars: [
       {
         title: "MEMS solid & liquid monopropellant micro-thrusters",
@@ -66,7 +66,7 @@ export const researchDetails: Record<ResearchAreaTag, ResearchDetail> = {
     longDescription:
       "Rotating Gliding Arc (RGA) plasma-assisted in-space propulsion targets the hardest regime in chemical propulsion: simultaneously high thrust (5 – 22 N) and high specific impulse (> 500 s). RGA discharges sustain stable arc rotation in the chamber and dramatically extend the operating envelope of green storable propellants — enabling orbital transfer vehicles and kick stages that today rely on hydrazine-class systems.",
     longDescriptionKo:
-      "회전 활강 아크(RGA) 플라즈마 보조 우주 추진은 화학 추진의 가장 난해한 영역 — 고추력(5 – 22 N)과 고비추력(> 500 s)의 동시 달성 — 을 목표로 합니다. RGA 방전은 챔버 내에서 아크의 안정적 회전을 유지시키며 친환경 저장성 추진제의 운용 영역을 크게 확장해, 현재 하이드라진급 시스템에 의존하는 궤도 천이체와 킥 스테이지를 가능하게 합니다.",
+      "회전 활강 아크(RGA) 플라즈마 보조 우주 추진은 화학 추진에서 가장 어려운 영역, 고추력(5 – 22 N)과 고비추력(> 500 s)의 동시 달성을 노립니다. RGA 방전은 챔버 안에서 아크의 회전을 안정적으로 유지하면서 친환경 저장성 추진제의 운용 폭을 크게 넓혀, 지금 하이드라진급 시스템이 도맡고 있는 궤도 천이체와 킥 스테이지의 자리를 대체합니다.",
     pillars: [
       {
         title: "Rotating Gliding Arc thrusters",
@@ -116,7 +116,7 @@ export const researchDetails: Record<ResearchAreaTag, ResearchDetail> = {
     longDescription:
       "Light/solar sails enabled by integrating active-structure thin-film actuators with optical metasurfaces — generating direct photonic forces and reconfigurable attitude control for deep-space missions. The mechanics of thin-film instabilities (wrinkling, buckling, large deformation) is predictive: we co-design metasurface optics with substrate mechanics so that the sail not only catches photons but actively reshapes itself in flight.",
     longDescriptionKo:
-      "능동 구조 박막 작동기와 광학 메타표면을 통합한 광/태양돛은 광자력에 의한 직접 추진과 재구성 가능한 자세 제어를 심우주 임무에 가능하게 합니다. 박막 불안정성(주름, 좌굴, 대변형)의 역학은 예측 가능합니다 — 메타표면 광학과 기판 역학을 함께 설계하여, 돛이 광자를 받을 뿐 아니라 비행 중 능동적으로 자기 형상을 재배열하도록 만듭니다.",
+      "능동 박막 작동기와 광학 메타표면을 결합한 광돛·태양돛으로 광자력 직접 추진과 능동 자세 제어를 심우주 임무에 풀어 놓습니다. 박막의 불안정성(주름, 좌굴, 대변형)은 예측 가능한 영역입니다. 메타표면 광학과 기판 역학을 함께 설계하면, 돛은 광자를 받기만 하는 것이 아니라 비행 중에 자기 형상을 능동적으로 다시 짜냅니다.",
     pillars: [
       {
         title: "Active thin-film actuators on metasurfaces",
@@ -166,7 +166,7 @@ export const researchDetails: Record<ResearchAreaTag, ResearchDetail> = {
     longDescription:
       "Beyond in-space propulsion, plasma actuation has rich applications in ground-test systems and air-breathing propulsion. The same RGA physics that powers OTV thrusters also enables high-enthalpy hypersonic test environments, re-entry arc wind tunnels, ramjet operating-environment simulators, fully electric jet engines, and VLEO atmosphere-breathing electric propulsion (ABEP).",
     longDescriptionKo:
-      "우주 추진을 넘어, 플라즈마 작동 기술은 지상 시험 시스템과 흡입식 추진에서도 풍부한 응용을 가집니다. OTV 추력기를 구동하는 동일한 RGA 물리가 고엔탈피 극초음속 시험 환경, 재진입 아크 풍동, 램제트 운용 환경 모사 장치, 전기식 제트 엔진, 그리고 초저궤도(VLEO) 흡입식 전기 추진(ABEP)을 가능하게 합니다.",
+      "우주 추진을 넘어, 플라즈마 기술은 지상 시험 시스템과 흡입식 추진에서도 응용 폭이 넓습니다. OTV 추력기를 굴리는 RGA 물리가 그대로 고엔탈피 극초음속 시험 환경, 재진입 아크 풍동, 램제트 환경 모사 장치, 전기식 제트 엔진, 그리고 초저궤도(VLEO) 흡입식 전기 추진(ABEP)으로 이어집니다.",
     pillars: [
       {
         title: "Plasma high-enthalpy ground tests",
