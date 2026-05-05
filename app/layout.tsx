@@ -31,6 +31,13 @@ export const metadata: Metadata = {
   },
   description:
     "Postdoctoral Researcher at POSTECH GIFT working on next-generation space propulsion: chemical, plasma-hybrid, and photonic propulsion systems.",
+  alternates: {
+    languages: {
+      en: "/",
+      ko: "/ko",
+      "x-default": "/",
+    },
+  },
   keywords: [
     "Jeongrak Lee",
     "Lee Jeongrak",
