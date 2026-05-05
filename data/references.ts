@@ -1,7 +1,10 @@
 export type Reference = {
   name: string;
+  nameKo?: string;
   affiliation: string;
+  affiliationKo?: string;
   address: string;
+  addressKo?: string;
   tel?: string;
   email: string;
 };

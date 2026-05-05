@@ -1,8 +1,12 @@
 export type Experience = {
   role: string;
+  roleKo?: string;
   organization: string;
+  organizationKo?: string;
   detail?: string;
+  detailKo?: string;
   bullets?: string[];
+  bulletsKo?: string[];
   period: string;
 };
 

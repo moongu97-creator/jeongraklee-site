@@ -7,6 +7,9 @@ import { publications } from "@/data/publications";
 import { CategoryTag } from "@/components/tag";
 import { PublicationCard } from "@/components/publication-card";
 import { cn } from "@/lib/utils";
+import type { Locale } from "@/i18n/locale";
+import { pick } from "@/i18n/locale";
+import { t } from "@/i18n/messages";
 
 const TABS: ResearchAreaTag[] = ["chemical", "hybrid", "photonics", "other"];
 
@@ -31,15 +34,10 @@ const TAB_HOVER_BORDER: Record<ResearchAreaTag, string> = {
   other: "hover:border-tag-other/60",
 };
 
-const SHORT_TITLE: Record<ResearchAreaTag, string> = {
-  chemical: "Chemical Propulsion",
-  hybrid: "Chemical-Plasma Propulsion",
-  photonics: "Photonic Propulsion",
-  other: "Aerospace Applications",
-};
-
-export function ResearchTabs() {
+export function ResearchTabs({ locale = "en" }: { locale?: Locale }) {
   const [active, setActive] = useState<ResearchAreaTag>("chemical");
+  const dict = t(locale);
+  const navSubs = dict.nav.researchSub;
 
   useEffect(() => {
     const fromHash = () => {
@@ -66,6 +64,16 @@ export function ResearchTabs() {
   const pubs = detail.selectedPubs
     .map((n) => publications.find((p) => p.number === n))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+  const areaTitle = pick(area.title, area.titleKo, locale);
+  const areaHorizon = pick(area.horizon, area.horizonKo, locale);
+  const longDescription = pick(
+    detail.longDescription,
+    detail.longDescriptionKo,
+    locale,
+  );
+  const keywords = pick(detail.keywords, detail.keywordsKo, locale);
+  const imageHint = pick(detail.imageHint, detail.imageHintKo, locale);
 
   return (
     <>
@@ -113,11 +121,11 @@ export function ResearchTabs() {
                     isActive ? "text-white/70" : "text-muted-foreground/80",
                   )}
                 >
-                  {a.horizon}
+                  {pick(a.horizon, a.horizonKo, locale)}
                 </span>
               </div>
               <h3 className="mt-2 font-heading text-base font-bold leading-tight md:text-lg">
-                {SHORT_TITLE[tag]}
+                {navSubs[tag]}
               </h3>
             </button>
           );
@@ -128,20 +136,20 @@ export function ResearchTabs() {
       <div role="tabpanel" key={active} className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
-            <CategoryTag tag={active} />
+            <CategoryTag tag={active} locale={locale} />
             <span className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-              {area.horizon}
+              {areaHorizon}
             </span>
           </div>
           <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            {area.title}
+            {areaTitle}
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground md:text-base">
-            {detail.longDescription}
+            {longDescription}
           </p>
 
           <h3 className="mt-10 mb-3 font-heading text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            Research pillars
+            {dict.common.researchPillars}
           </h3>
           <ul className="space-y-5">
             {detail.pillars.map((p, i) => (
@@ -150,20 +158,20 @@ export function ResearchTabs() {
                 className="border-l-2 border-border pl-5 transition-colors hover:border-foreground/30"
               >
                 <p className="font-heading text-base font-semibold text-foreground">
-                  {p.title}
+                  {pick(p.title, p.titleKo, locale)}
                 </p>
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  {p.body}
+                  {pick(p.body, p.bodyKo, locale)}
                 </p>
               </li>
             ))}
           </ul>
 
           <h3 className="mt-10 mb-3 font-heading text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            Keywords
+            {dict.common.keywords}
           </h3>
           <div className="flex flex-wrap gap-2">
-            {detail.keywords.map((k) => (
+            {keywords.map((k) => (
               <span
                 key={k}
                 className="inline-flex items-center rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground"
@@ -184,10 +192,10 @@ export function ResearchTabs() {
             <div className="absolute inset-0 grid place-items-center text-center">
               <div className="px-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                  Figure placeholder
+                  {dict.common.figurePlaceholder}
                 </p>
                 <p className="mt-3 font-heading text-base font-semibold text-foreground/80">
-                  {detail.imageHint}
+                  {imageHint}
                 </p>
                 <p className="mt-2 text-xs italic text-muted-foreground">
                   Replace at <code className="font-mono">public/research/{active}.jpg</code>
@@ -197,11 +205,11 @@ export function ResearchTabs() {
           </figure>
 
           <h3 className="mt-8 mb-3 font-heading text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            Selected publications
+            {dict.common.selectedPublications}
           </h3>
           <div>
             {pubs.map((p) => (
-              <PublicationCard key={p.number} pub={p} compact />
+              <PublicationCard key={p.number} pub={p} compact locale={locale} />
             ))}
           </div>
         </aside>

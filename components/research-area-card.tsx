@@ -1,4 +1,6 @@
 import type { ResearchArea } from "@/data/research";
+import type { Locale } from "@/i18n/locale";
+import { pick } from "@/i18n/locale";
 import { CategoryTag } from "@/components/tag";
 import { cn } from "@/lib/utils";
 
@@ -12,10 +14,17 @@ const ACCENT: Record<ResearchArea["tag"], string> = {
 export function ResearchAreaCard({
   area,
   expanded = false,
+  locale = "en",
 }: {
   area: ResearchArea;
   expanded?: boolean;
+  locale?: Locale;
 }) {
+  const title = pick(area.title, area.titleKo, locale);
+  const horizon = pick(area.horizon, area.horizonKo, locale);
+  const summary = pick(area.summary, area.summaryKo, locale);
+  const bullets = pick(area.bullets, area.bulletsKo, locale);
+
   return (
     <article
       className={cn(
@@ -28,20 +37,20 @@ export function ResearchAreaCard({
         <span className="font-mono text-xs text-muted-foreground">
           0{area.index}
         </span>
-        <CategoryTag tag={area.tag} />
+        <CategoryTag tag={area.tag} locale={locale} />
         <span className="ml-auto text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-          {area.horizon}
+          {horizon}
         </span>
       </div>
       <h3 className="mt-4 font-heading text-xl font-bold tracking-tight text-foreground md:text-2xl">
-        {area.title}
+        {title}
       </h3>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-        {area.summary}
+        {summary}
       </p>
       {expanded && (
         <ul className="mt-5 space-y-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-          {area.bullets.map((b, i) => (
+          {bullets.map((b, i) => (
             <li key={i} className="flex gap-3">
               <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-foreground/40" />
               <span>{b}</span>

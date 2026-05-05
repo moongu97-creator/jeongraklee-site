@@ -6,8 +6,10 @@ export type MediaOutlet = {
 export type MediaItem = {
   number: number;
   title: string;
+  titleKo?: string;
   outlets?: MediaOutlet[];
   date: string;
+  dateKo?: string;
   image?: string;
 };
 

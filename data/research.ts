@@ -4,9 +4,13 @@ export type ResearchArea = {
   tag: ResearchAreaTag;
   index: number;
   title: string;
+  titleKo?: string;
   horizon: string;
+  horizonKo?: string;
   summary: string;
+  summaryKo?: string;
   bullets: string[];
+  bulletsKo?: string[];
 };
 
 export const researchAreas: ResearchArea[] = [

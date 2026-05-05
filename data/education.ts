@@ -1,10 +1,15 @@
 export type Education = {
   institution: string;
+  institutionKo?: string;
   location: string;
+  locationKo?: string;
   degree: string;
+  degreeKo?: string;
   detail?: string;
+  detailKo?: string;
   period: string;
   honors?: string[];
+  honorsKo?: string[];
 };
 
 export const education: Education[] = [

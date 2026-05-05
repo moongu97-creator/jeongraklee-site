@@ -1,8 +1,11 @@
 export type Award = {
   year: string;
   title: string;
+  titleKo?: string;
   body?: string;
+  bodyKo?: string;
   detail?: string;
+  detailKo?: string;
   level: "graduate" | "undergraduate";
   highlight?: boolean;
 };

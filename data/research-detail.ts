@@ -2,10 +2,13 @@ import type { ResearchAreaTag } from "./research";
 
 export type ResearchDetail = {
   longDescription: string;
-  pillars: { title: string; body: string }[];
+  longDescriptionKo?: string;
+  pillars: { title: string; body: string; titleKo?: string; bodyKo?: string }[];
   keywords: string[];
+  keywordsKo?: string[];
   selectedPubs: number[];
   imageHint: string;
+  imageHintKo?: string;
 };
 
 export const researchDetails: Record<ResearchAreaTag, ResearchDetail> = {

@@ -1,12 +1,7 @@
 import type { ResearchAreaTag } from "@/data/research";
+import type { Locale } from "@/i18n/locale";
+import { t } from "@/i18n/messages";
 import { cn } from "@/lib/utils";
-
-const TAG_LABEL: Record<ResearchAreaTag, string> = {
-  chemical: "Chemical",
-  hybrid: "Hybrid",
-  photonics: "Photonics",
-  other: "Cross-cutting",
-};
 
 const TAG_CLASS: Record<ResearchAreaTag, string> = {
   chemical: "bg-tag-chemical/10 text-tag-chemical ring-tag-chemical/30",
@@ -18,10 +13,13 @@ const TAG_CLASS: Record<ResearchAreaTag, string> = {
 export function CategoryTag({
   tag,
   className,
+  locale = "en",
 }: {
   tag: ResearchAreaTag;
   className?: string;
+  locale?: Locale;
 }) {
+  const dict = t(locale);
   return (
     <span
       className={cn(
@@ -30,7 +28,7 @@ export function CategoryTag({
         className,
       )}
     >
-      {TAG_LABEL[tag]}
+      {dict.tag[tag]}
     </span>
   );
 }

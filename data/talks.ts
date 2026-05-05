@@ -1,10 +1,15 @@
 export type InvitedTalk = {
   number: number;
   host: string;
+  hostKo?: string;
   title: string;
+  titleKo?: string;
   date: string;
+  dateKo?: string;
   location: string;
+  locationKo?: string;
   hostedBy: string;
+  hostedByKo?: string;
 };
 
 export const invitedTalks: InvitedTalk[] = [
@@ -95,8 +100,11 @@ export type Conference = {
   authors: string;
   year: number;
   title: string;
+  titleKo?: string;
   venue: string;
+  venueKo?: string;
   award?: string;
+  awardKo?: string;
   myIndex?: number;
 };
 
@@ -218,14 +226,20 @@ export const internationalConferences: Conference[] = [
 export const domesticConferenceNote =
   "28 presentations at the Korean Society of Mechanical Engineers (KSME), the Korean Society for Aeronautical and Space Sciences (KSAS), the Korean Society for Precision Engineering (KSPE), and the Korean Society of Propulsion Engineers (KSPE) — including three award-winning talks: KSME 2022 Excellence Paper Award, KSPE 2022 Best Paper Award, and KSME 2020 CAE/Applied Mechanics Best Paper Award.";
 
+export const domesticConferenceNoteKo = "";
+
 export type DomesticConference = {
   number: number;
   authors: string;
   title: string;
+  titleKo?: string;
   venue: string;
+  venueKo?: string;
   location: string;
+  locationKo?: string;
   date: string;
   award?: string;
+  awardKo?: string;
   isFirstAuthor: boolean;
 };
 

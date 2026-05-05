@@ -1,7 +1,9 @@
 export type Patent = {
   inventors: string;
+  inventorsKo?: string;
   year: number;
   title: string;
+  titleKo?: string;
   number: string;
   status: "registered" | "pending";
   date: string;
@@ -43,6 +45,8 @@ export const domesticPatentsSummary = {
   total: 14,
   registered: 6,
   pending: 8,
+  registeredListKo: [] as string[],
+  pendingListKo: [] as string[],
   registeredList: [
     "Production method of solid projectile (KR 10-2181636, registered 2020-11-17)",
     "Mass-fraction controlled solid propellant (KR 10-2199780, registered 2020-12-31)",

@@ -1,10 +1,15 @@
 export type Grant = {
   title: string;
+  titleKo?: string;
   agency: string;
+  agencyKo?: string;
   role: string;
+  roleKo?: string;
   amount?: string;
+  amountKo?: string;
   period: string;
   project: string;
+  projectKo?: string;
   highlight?: boolean;
 };
 

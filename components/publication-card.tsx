@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Publication } from "@/data/publications";
+import type { Locale } from "@/i18n/locale";
+import { localePath } from "@/i18n/locale";
 import { CategoryTag } from "@/components/tag";
 import { HighlightAuthor } from "@/components/highlight-author";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
@@ -10,13 +12,17 @@ export function PublicationCard({
   pub,
   compact = false,
   withThumbnail = false,
+  locale = "en",
 }: {
   pub: Publication;
   compact?: boolean;
   withThumbnail?: boolean;
+  locale?: Locale;
 }) {
   const showThumbnail = withThumbnail && !compact && Boolean(pub.thumbnailUrl);
-  const internalHref = pub.slug ? `/publications/${pub.slug}` : null;
+  const internalHref = pub.slug
+    ? localePath(`/publications/${pub.slug}`, locale)
+    : null;
   const externalHref = pub.url ?? null;
   const hasInteractiveCard = Boolean(internalHref || externalHref);
 
@@ -29,7 +35,7 @@ export function PublicationCard({
       </div>
       <div className="flex-1">
         <div className="flex flex-wrap items-center gap-2 text-xs">
-          <CategoryTag tag={pub.category} />
+          <CategoryTag tag={pub.category} locale={locale} />
           <span className="font-mono text-muted-foreground">{pub.year}</span>
           {pub.note && (
             <span className="rounded-full bg-brand-primary/10 px-2 py-0.5 text-[11px] font-medium text-brand-primary">
