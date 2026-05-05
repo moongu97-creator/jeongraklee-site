@@ -10,6 +10,10 @@ import {
 } from "@/data/publications";
 import type { Metadata } from "next";
 
+// Toggle to bring back the paper-cover marquee at the top of the page.
+// To restore: set to true. Variable + ScrollingMarquee import below stay in place.
+const SHOW_PUBLICATIONS_MARQUEE = false;
+
 const publicationsMarqueeItems = publications
   .filter((p) => p.paperImageUrl)
   .slice()
@@ -39,7 +43,9 @@ export default function PublicationsPage() {
         }
       />
 
-      <ScrollingMarquee items={publicationsMarqueeItems} layout="tall" />
+      {SHOW_PUBLICATIONS_MARQUEE && (
+        <ScrollingMarquee items={publicationsMarqueeItems} layout="tall" />
+      )}
 
       <Section
         eyebrow="Thrust I"
