@@ -2,37 +2,59 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { ChevronDown, Languages, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
+import type { Locale } from "@/i18n/locale";
+import { t } from "@/i18n/messages";
 
 type SubItem = { href: string; label: string };
 type NavItem = { href: string; label: string; subItems?: SubItem[] };
 
-const NAV_ITEMS: NavItem[] = [
-  { href: "/", label: "Home" },
-  {
-    href: "/research",
-    label: "Research",
-    subItems: [
-      { href: "/research#chemical", label: "Chemical Propulsion" },
-      { href: "/research#hybrid", label: "Chemical-Plasma Propulsion" },
-      { href: "/research#photonics", label: "Photonic Propulsion" },
-      { href: "/research#other", label: "Aerospace Applications" },
-    ],
-  },
-  { href: "/cv", label: "CV" },
-  { href: "/publications", label: "Publications" },
-  { href: "/talks", label: "Talks" },
-  { href: "/awards", label: "Awards" },
-  { href: "/media", label: "Media" },
-];
+function buildNavItems(locale: Locale): NavItem[] {
+  const dict = t(locale);
+  const prefix = locale === "ko" ? "/ko" : "";
+  const home = locale === "ko" ? "/ko" : "/";
+  return [
+    { href: home, label: dict.nav.home },
+    {
+      href: `${prefix}/research`,
+      label: dict.nav.research,
+      subItems: [
+        { href: `${prefix}/research#chemical`, label: dict.nav.researchSub.chemical },
+        { href: `${prefix}/research#hybrid`, label: dict.nav.researchSub.hybrid },
+        { href: `${prefix}/research#photonics`, label: dict.nav.researchSub.photonics },
+        { href: `${prefix}/research#other`, label: dict.nav.researchSub.other },
+      ],
+    },
+    { href: `${prefix}/cv`, label: dict.nav.cv },
+    { href: `${prefix}/publications`, label: dict.nav.publications },
+    { href: `${prefix}/talks`, label: dict.nav.talks },
+    { href: `${prefix}/awards`, label: dict.nav.awards },
+    { href: `${prefix}/media`, label: dict.nav.media },
+  ];
+}
+
+function languageSwapPath(pathname: string): { href: string; label: string } {
+  const isKo = pathname === "/ko" || pathname.startsWith("/ko/");
+  if (isKo) {
+    const stripped = pathname.replace(/^\/ko/, "") || "/";
+    return { href: stripped, label: "EN" };
+  }
+  const next = pathname === "/" ? "/ko" : `/ko${pathname}`;
+  return { href: next, label: "한국어" };
+}
 
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const locale: Locale =
+    pathname === "/ko" || pathname.startsWith("/ko/") ? "ko" : "en";
+  const navItems = useMemo(() => buildNavItems(locale), [locale]);
+  const langSwap = useMemo(() => languageSwapPath(pathname), [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -43,8 +65,11 @@ export function Navbar() {
 
   const closeMobile = () => setMobileOpen(false);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => {
+    const [path] = href.split("#");
+    if (path === "/" || path === "/ko") return pathname === path;
+    return pathname === path || pathname.startsWith(`${path}/`);
+  };
 
   const handleSubClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -67,6 +92,8 @@ export function Navbar() {
         : "text-muted-foreground hover:text-foreground after:w-0 hover:after:w-full",
     );
 
+  const homeHref = locale === "ko" ? "/ko" : "/";
+
   return (
     <header
       className={cn(
@@ -78,14 +105,14 @@ export function Navbar() {
     >
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6 lg:px-12">
         <Link
-          href="/"
+          href={homeHref}
           className="font-heading text-xl font-bold tracking-tight text-foreground transition-colors hover:text-brand-primary"
         >
           Jeongrak Lee
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {NAV_ITEMS.map((item) =>
+          {navItems.map((item) =>
             item.subItems ? (
               <div key={item.href} className="group relative">
                 <Link
@@ -124,10 +151,26 @@ export function Navbar() {
               </Link>
             ),
           )}
+          <Link
+            href={langSwap.href}
+            aria-label={`Switch language to ${langSwap.label}`}
+            className="inline-flex h-9 items-center gap-1.5 rounded-full border border-border bg-background px-3 text-xs font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5"
+          >
+            <Languages className="h-3.5 w-3.5" />
+            {langSwap.label}
+          </Link>
           <ThemeToggle />
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">
+          <Link
+            href={langSwap.href}
+            aria-label={`Switch language to ${langSwap.label}`}
+            className="inline-flex h-9 items-center gap-1.5 rounded-full border border-border bg-background px-3 text-xs font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5"
+          >
+            <Languages className="h-3.5 w-3.5" />
+            {langSwap.label}
+          </Link>
           <ThemeToggle />
           <button
             type="button"
@@ -148,7 +191,7 @@ export function Navbar() {
       {mobileOpen && (
         <div className="border-t border-border bg-background lg:hidden">
           <nav className="mx-auto flex w-full max-w-7xl flex-col gap-1 px-6 py-4">
-            {NAV_ITEMS.map((item) => (
+            {navItems.map((item) => (
               <div key={item.href}>
                 <Link
                   href={item.href}
