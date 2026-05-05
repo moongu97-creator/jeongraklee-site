@@ -40,12 +40,16 @@ export function Hero({ locale = "en" }: { locale?: Locale } = {}) {
         <p className="mb-4 text-xs font-mono uppercase tracking-[0.2em] text-brand-primary">
           {title} · {shortAffiliation}
         </p>
-        <h1 className="font-heading text-4xl font-bold leading-[1.05] tracking-tight text-foreground md:text-6xl">
-          {name}
-        </h1>
-        <p className="mt-6 font-heading text-xl leading-snug text-foreground md:text-3xl">
-          {tagline}
-        </p>
+        {locale !== "ko" && (
+          <h1 className="font-heading text-4xl font-bold leading-[1.05] tracking-tight text-foreground md:text-6xl">
+            {name}
+          </h1>
+        )}
+        {locale !== "ko" && (
+          <p className="mt-6 font-heading text-xl leading-snug text-foreground md:text-3xl">
+            {tagline}
+          </p>
+        )}
 
         <div className="mt-5 grid items-stretch gap-6 md:grid-cols-[1fr_320px] md:gap-10">
           <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
