@@ -20,6 +20,7 @@ export const media: MediaItem[] = [
       "Surface roughness engineering for metal–polymer adhesion in additive manufacturing (Pub #9, VPP 2026)",
     titleKo:
       "3D 금속 프린팅의 거친 표면을 접착제로 활용 — 금속·폴리머 접합 강도 2배 (Pub #9, VPP 2026)",
+    image: "/media/etnews-roughness.jpg",
     outlets: [
       {
         name: "YTN Science",
