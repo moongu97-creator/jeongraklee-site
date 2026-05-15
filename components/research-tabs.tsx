@@ -3,11 +3,9 @@
 import { useEffect, useState } from "react";
 import { researchAreas, type ResearchAreaTag } from "@/data/research";
 import { researchDetails } from "@/data/research-detail";
-import { researchSlides } from "@/data/research-slides";
 import { publications } from "@/data/publications";
 import { CategoryTag } from "@/components/tag";
 import { PublicationCard } from "@/components/publication-card";
-import { ResearchCarousel } from "@/components/research-carousel";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/i18n/locale";
 import { pick } from "@/i18n/locale";
@@ -185,34 +183,26 @@ export function ResearchTabs({ locale = "en" }: { locale?: Locale }) {
         </div>
 
         <aside>
-          <ResearchCarousel
-            key={active}
-            slides={researchSlides.filter((s) => s.area === active)}
-            locale={locale}
-            aspect="portrait"
-            placeholder={
-              <figure
-                className={cn(
-                  "relative aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-gradient-to-br",
-                  TAG_GRADIENT[active],
-                )}
-              >
-                <div className="absolute inset-0 grid place-items-center text-center">
-                  <div className="px-6">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                      {dict.common.figurePlaceholder}
-                    </p>
-                    <p className="mt-3 font-heading text-base font-semibold text-foreground/80">
-                      {imageHint}
-                    </p>
-                    <p className="mt-2 text-xs italic text-muted-foreground">
-                      Replace at <code className="font-mono">public/research/{active}.jpg</code>
-                    </p>
-                  </div>
-                </div>
-              </figure>
-            }
-          />
+          <figure
+            className={cn(
+              "relative aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-gradient-to-br",
+              TAG_GRADIENT[active],
+            )}
+          >
+            <div className="absolute inset-0 grid place-items-center text-center">
+              <div className="px-6">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  {dict.common.figurePlaceholder}
+                </p>
+                <p className="mt-3 font-heading text-base font-semibold text-foreground/80">
+                  {imageHint}
+                </p>
+                <p className="mt-2 text-xs italic text-muted-foreground">
+                  Replace at <code className="font-mono">public/research/{active}.jpg</code>
+                </p>
+              </div>
+            </div>
+          </figure>
 
           <h3 className="mt-8 mb-3 font-heading text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             {dict.common.selectedPublications}
