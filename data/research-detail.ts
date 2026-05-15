@@ -14,9 +14,9 @@ export type ResearchDetail = {
 export const researchDetails: Record<ResearchAreaTag, ResearchDetail> = {
   chemical: {
     longDescription:
-      "MEMS-based monopropellant micro-thrusters and Lab-on-PCB propellant validation platforms take CubeSat and constellation propulsion from the lab bench to orbit today. By co-fabricating ignitor, combustion chamber, and structural support on a single PCB substrate, the entire propulsion module becomes scalable, reproducible, and mass-manufacturable — closing the gap between research-grade demonstrators and operational small-satellite hardware.",
+      "Chemical propulsion sits on three threads. First, MEMS-based monopropellant micro-thrusters co-fabricate ignitor, combustion chamber, and structural support on a single PCB substrate, so the entire CubeSat/constellation propulsion module becomes scalable, reproducible, and mass-manufacturable. Second, Lab-on-PCB propellant validation platforms close the qualification gap between research-grade demonstrators and flight units by testing propellant chemistry on the same substrate as the thruster. Third, plasma-assisted ignition of green storable bipropellants (N₂O/CH₄, N₂O/NH₃) extends the same RGA ignition source from small-scale (~1 N) mono-/bi-propellant thrusters to large-scale (>100 N) kick-stage engines. Together they take chemical propulsion from the lab bench to orbital operation today — from CubeSats up to large kick stages.",
     longDescriptionKo:
-      "MEMS 단일추진제 마이크로 추력기와 Lab-on-PCB 추진제 검증 플랫폼으로 큐브샛·위성군의 추진 시스템을 실험실 시연에서 궤도 운용까지 끌고 갑니다. 점화기·연소실·구조 지지부를 하나의 PCB 기판에 함께 만들기 때문에 추진 모듈 전체가 양산 가능한 구조로 정리됩니다. 연구용 시연체와 실 운용 소형 위성 하드웨어 사이의 거리를 한 단계 좁히는 접근입니다.",
+      "화학 추진은 세 줄기로 짜여 있습니다. 첫째, MEMS 단일추진제 마이크로 추력기는 점화기·연소실·구조 지지부를 하나의 PCB 기판에 함께 만들어 큐브샛·위성군 추진 모듈 전체를 양산 가능한 구조로 정리합니다. 둘째, Lab-on-PCB 추진제 검증 플랫폼이 추진제 화학을 비행용과 동일한 기판 위에서 검증해, 연구용 시연체와 실 운용 비행 유닛 사이의 인증 간격을 메웁니다. 셋째, 친환경 저장성 bipropellant(N₂O/CH₄, N₂O/NH₃)의 플라즈마 보조 점화로 소형(~1 N) 단일·이원 추력기부터 대형(>100 N) 킥 스테이지 엔진까지 동일한 RGA 점화원을 적용합니다. 세 줄기가 함께 화학 추진을 실험실에서 궤도 운용으로 끌고 갑니다 — 큐브샛부터 대형 킥 스테이지까지.",
     pillars: [
       {
         title: "MEMS solid & liquid monopropellant micro-thrusters",

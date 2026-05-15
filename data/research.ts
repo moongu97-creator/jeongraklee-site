@@ -22,9 +22,9 @@ export const researchAreas: ResearchArea[] = [
     horizon: "Mission-Ready",
     horizonKo: "현재 — 임무 가능",
     summary:
-      "MEMS-based monopropellant micro-thrusters and Lab-on-a-Chip propellant validation platforms that take CubeSat and constellation missions from lab to orbit today.",
+      "MEMS-based monopropellant micro-thrusters, Lab-on-PCB propellant validation platforms, and plasma-assisted ignition of green storable bipropellants (N₂O/CH₄, N₂O/NH₃) — chemical propulsion that takes CubeSats, constellations, and large-engine kick stages from lab to orbit today.",
     summaryKo:
-      "큐브샛과 위성군에 바로 들어갈 수 있는 MEMS 단일추진제 마이크로 추력기, 그리고 Lab-on-a-Chip 추진제 검증 플랫폼. 실험실 시연을 넘어 실제 궤도 운용까지 가는 길을 만듭니다.",
+      "MEMS 단일추진제 마이크로 추력기, Lab-on-PCB 추진제 검증 플랫폼, 그리고 친환경 저장성 bipropellant(N₂O/CH₄, N₂O/NH₃)의 플라즈마 보조 점화. 큐브샛·위성군부터 대형 킥 스테이지까지, 화학 추진을 실험실에서 궤도 운용으로 끌고 갑니다.",
     bullets: [
       "MEMS solid and liquid monopropellant micro-thrusters (50 mN – 1 N) for CubeSats and constellations.",
       "Lab-on-a-Chip propellant validation platforms with multi-mode thrust capability.",
