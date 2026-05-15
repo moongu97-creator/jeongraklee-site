@@ -1,9 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import type { ReactNode } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { researchSlides } from "@/data/research-slides";
+import {
+  researchSlides,
+  type ResearchSlide,
+} from "@/data/research-slides";
 import { CategoryTag } from "@/components/tag";
 import type { Locale } from "@/i18n/locale";
 import { pick } from "@/i18n/locale";
@@ -11,17 +15,27 @@ import { cn } from "@/lib/utils";
 
 const AUTOPLAY_MS = 5000;
 
-export function ResearchCarousel({ locale = "en" }: { locale?: Locale }) {
-  const total = researchSlides.length;
+const ASPECT_CLASSES = {
+  video: "aspect-[16/9]",
+  portrait: "aspect-[4/5]",
+} as const;
+
+type Props = {
+  slides?: ResearchSlide[];
+  locale?: Locale;
+  aspect?: keyof typeof ASPECT_CLASSES;
+  placeholder?: ReactNode;
+};
+
+export function ResearchCarousel({
+  slides = researchSlides,
+  locale = "en",
+  aspect = "video",
+  placeholder,
+}: Props) {
+  const total = slides.length;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-
-  const go = useCallback(
-    (next: number) => {
-      setIndex(((next % total) + total) % total);
-    },
-    [total],
-  );
 
   useEffect(() => {
     if (paused || total <= 1) return;
@@ -31,7 +45,11 @@ export function ResearchCarousel({ locale = "en" }: { locale?: Locale }) {
     return () => window.clearInterval(id);
   }, [paused, total]);
 
-  const current = researchSlides[index];
+  if (total === 0) return <>{placeholder ?? null}</>;
+
+  const current = slides[index] ?? slides[0];
+  const go = (next: number) =>
+    setIndex(((next % total) + total) % total);
 
   return (
     <div
@@ -42,8 +60,8 @@ export function ResearchCarousel({ locale = "en" }: { locale?: Locale }) {
       aria-label="Research image carousel"
     >
       <figure className="relative overflow-hidden rounded-2xl border border-border bg-card">
-        <div className="relative aspect-[16/9] w-full">
-          {researchSlides.map((s, i) => (
+        <div className={cn("relative w-full", ASPECT_CLASSES[aspect])}>
+          {slides.map((s, i) => (
             <div
               key={s.src}
               className={cn(
@@ -96,7 +114,7 @@ export function ResearchCarousel({ locale = "en" }: { locale?: Locale }) {
 
       {total > 1 && (
         <div className="mt-3 flex items-center justify-center gap-2">
-          {researchSlides.map((s, i) => (
+          {slides.map((s, i) => (
             <button
               key={s.src}
               type="button"
