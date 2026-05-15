@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/hero";
 import { Section } from "@/components/section";
 import { CoverCarousel } from "@/components/cover-carousel";
+import { ResearchCarousel } from "@/components/research-carousel";
 import { ScrollingMarquee } from "@/components/scrolling-marquee";
 import { ResearchAreaCard } from "@/components/research-area-card";
 import { PublicationCard } from "@/components/publication-card";
@@ -44,6 +45,9 @@ export function HomeView({ locale = "en" }: { locale?: Locale }) {
         title={dict.home.researchTitle}
         description={dict.home.researchDescription}
       >
+        <div className="mb-10">
+          <ResearchCarousel locale={locale} />
+        </div>
         <div className="grid gap-5 md:grid-cols-3">
           {researchAreas.slice(0, 3).map((area) => (
             <ResearchAreaCard key={area.tag} area={area} locale={locale} />
