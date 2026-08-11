@@ -4032,8 +4032,8 @@ background:#fcfcfb;border-radius:4px;cursor:pointer;}.mvb:hover{background:#e8ee
 </div>
 <script>
 function showTab(t){
-  var ids={'3d':'view3d','md':'modal3d','ga':'gallery','dl':'dlbox'};
-  var btns={'3d':'tb3d','md':'tbmd','ga':'tbga','dl':'tbdl'};
+  var ids={'3d':'view3d','md':'modal3d','ga':'gallery'};
+  var btns={'3d':'tb3d','md':'tbmd','ga':'tbga'};
   for(var k in ids){
     document.getElementById(ids[k]).style.display=(k===t)?((k==='ga')?'block':'block'):'none';
     var b=document.getElementById(btns[k]);
