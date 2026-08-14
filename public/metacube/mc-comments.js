@@ -6,8 +6,32 @@
   var RAW = "https://raw.githubusercontent.com/moongu97-creator/jeongraklee-site/main/public/metacube/comments.json";
   var NAVY = "#1F3864";
 
+  var GUIDE =
+    '<aside style="flex:0 0 300px;min-width:260px;background:#f7f9fc;border:1px solid #d0d4da;' +
+    'border-radius:8px;padding:14px 16px;font-size:12.5px;color:#2b3138;line-height:1.65">' +
+    '<div style="font-size:13.5px;font-weight:700;color:' + NAVY + ';margin-bottom:8px">이 창 사용법</div>' +
+    '<div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #e2e7ef">' +
+    '<span style="background:#2E4E7E;color:#fff;border-radius:3px;padding:1px 7px;font-size:11px;' +
+    'font-weight:700">일반질문</span> ' +
+    '<div style="margin-top:6px">설계·해석·부품 무엇이든 물어보세요. ' +
+    '<b>보통 1분 이내</b>(감지 15초 + 답변 작성)에 답글이 달립니다.<br>' +
+    '<span style="color:#5c6470">예) 소재 물성이 뭐야 / CMOS 발열 얼마야 / 이 치수 왜 이렇게 정했어</span></div></div>' +
+    '<div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #e2e7ef">' +
+    '<span style="background:#d98040;color:#fff;border-radius:3px;padding:1px 7px;font-size:11px;' +
+    'font-weight:700">설계변경 제안</span> ' +
+    '<div style="margin-top:6px">바꿔야 할 부분이 있으면 유형을 <b>설계변경 제안</b>으로 바꿔 남겨주세요. ' +
+    'CAD 수정 → 간섭·미광 검증 → STEP·BOM·페이지까지 <b>자동 반영</b>됩니다. ' +
+    '(보통 <b>5~10분</b>)<br><span style="color:#5c6470">예) 벽 더 얇게 / 이 기둥 빼줘 / 베인 각도 바꿔줘</span></div></div>' +
+    '<div style="margin-bottom:10px"><b>상태 표시</b><br>' +
+    '<span style="color:#5c6470">질문 → 답변완료 · 설계변경 → 접수 → 검토중 → 반영 / 기각</span></div>' +
+    '<div style="background:#fff6e8;border:1px solid #f0d5ae;border-radius:5px;padding:8px 10px;' +
+    'font-size:11.5px;color:#7a5a20">자동 답변은 작업 세션이 켜져 있을 때 동작합니다. ' +
+    '응답이 없으면 잠시 후 다시 확인해 주세요 — 댓글은 사라지지 않고 그대로 남습니다.</div></aside>';
+
   host.innerHTML =
-    '<div style="max-width:980px;margin:18px auto 40px;padding:0 16px;font-family:\'Malgun Gothic\',sans-serif">' +
+    '<div style="max-width:1240px;margin:18px auto 40px;padding:0 16px;font-family:\'Malgun Gothic\',sans-serif;' +
+    'display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">' +
+    '<div style="flex:1 1 600px;min-width:320px">' +
     '<h2 style="font-size:16px;color:' + NAVY + ';border-bottom:2px solid ' + NAVY + ';padding-bottom:5px">' +
     "설계 리뷰 댓글 — " + (PAGE === "barrel" ? "경통(카메라)" : "전기체 3U") + "</h2>" +
     '<div id="mcc-list" style="margin:10px 0;font-size:13px;color:#333">불러오는 중…</div>' +
@@ -20,7 +44,8 @@
     '<textarea id="mcc-text" rows="3" maxlength="2000" placeholder="댓글 내용 — 일반질문은 답변 댓글이 달리고, 설계변경 제안은 접수→검토→반영/기각 상태로 관리됩니다." style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #b9c3d4;border-radius:4px;font-size:13px"></textarea>' +
     '<div style="display:flex;align-items:center;gap:10px;margin-top:8px">' +
     '<button id="mcc-send" style="background:' + NAVY + ';color:#fff;border:0;border-radius:4px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer">등록</button>' +
-    '<span id="mcc-msg" style="font-size:12px;color:#5c6470"></span></div></div></div>';
+    '<span id="mcc-msg" style="font-size:12px;color:#5c6470"></span></div></div></div>' +
+    GUIDE + "</div>";
 
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
