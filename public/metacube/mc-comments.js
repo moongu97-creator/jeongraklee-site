@@ -7,7 +7,7 @@
   var NAVY = "#1F3864";
 
   var GUIDE =
-    '<aside style="flex:0 0 300px;min-width:260px;background:#f7f9fc;border:1px solid #d0d4da;' +
+    '<aside style="flex:0 0 300px;min-width:260px;position:sticky;top:14px;align-self:flex-start;' + 'background:#f7f9fc;border:1px solid #d0d4da;' +
     'border-radius:8px;padding:14px 16px;font-size:12.5px;color:#2b3138;line-height:1.65">' +
     '<div style="font-size:13.5px;font-weight:700;color:' + NAVY + ';margin-bottom:8px">이 창 사용법</div>' +
     '<div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #e2e7ef">' +
@@ -52,6 +52,20 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
+  // 저장은 ISO(UTC 또는 +09:00), 표시는 항상 한국시간(KST)
+  function fmt(ts) {
+    if (!ts) return "";
+    var d = new Date(ts);
+    if (isNaN(d.getTime())) return String(ts).slice(0, 16).replace("T", " ");
+    try {
+      return new Intl.DateTimeFormat("ko-KR", {
+        timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit",
+        hour: "2-digit", minute: "2-digit", hour12: false
+      }).format(d).replace(/\.\s*/g, "-").replace(/-$/, "").replace(/-(\d{2}:)/, " $1");
+    } catch (e) {
+      return String(ts).slice(0, 16).replace("T", " ");
+    }
+  }
   function badge(txt, bg) {
     return '<span style="background:' + bg + ';color:#fff;border-radius:3px;padding:1px 7px;font-size:11px;font-weight:700;margin-right:6px">' + txt + "</span>";
   }
@@ -66,12 +80,12 @@
       var h = '<div style="border-bottom:1px solid #e4e7ec;padding:9px 2px">';
       h += badge(c.type, c.type === "설계변경" ? "#d98040" : "#2E4E7E");
       if (c.status) h += badge(c.status, STATUS_BG[c.status] || "#8a93a0");
-      h += "<b>" + esc(c.name) + "</b> <span style='color:#8a93a0;font-size:11px'>" + esc((c.ts || "").slice(0, 16).replace("T", " ")) + "</span>";
+      h += "<b>" + esc(c.name) + "</b> <span style='color:#8a93a0;font-size:11px'>" + esc(fmt(c.ts)) + "</span>";
       h += '<div style="margin:5px 0 0;white-space:pre-wrap">' + esc(c.text) + "</div>";
       (c.replies || []).forEach(function (r) {
         h += '<div style="margin:7px 0 0 18px;padding:7px 10px;background:#f0f3f8;border-left:3px solid ' + NAVY + ';border-radius:0 4px 4px 0">' +
           badge(r.by || "Prof. Anna", NAVY) +
-          "<span style='color:#8a93a0;font-size:11px'>" + esc((r.ts || "").slice(0, 16).replace("T", " ")) + "</span>" +
+          "<span style='color:#8a93a0;font-size:11px'>" + esc(fmt(r.ts)) + "</span>" +
           '<div style="margin-top:4px;white-space:pre-wrap">' + esc(r.text) + "</div></div>";
       });
       return h + "</div>";
