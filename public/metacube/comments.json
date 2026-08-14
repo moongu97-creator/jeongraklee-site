@@ -135,7 +135,7 @@
       "name": "김민수",
       "text": "지금 탑재체 모든 파일의 물성이 있나? 아바쿠스로 열/진동 해석 할거야.",
       "ts": "2026-08-14T12:16:26.196Z",
-      "status": "다운로드 → ① 해석용 섹션\n    barrel_single(경통) / front_plate_single(전면판) / barrel_assy(조립체) / metacube_3u(전기체)\n  팀 레포에도 있습니다: cad/barrel/ · analysis/\n\n전처리 팁: 열해석은 O-링 suppress, 전기체 구조해석은 베인 defeature, 히터·PT는 면 열원으로 두시면 수렴이 빠릅니다.\n필요하시면 Abaqus 입력용 물성 파일(.inp material 블록)로 만들어 드리겠습니다.",
+      "status": "답변완료",
       "replies": [
         {
           "by": "Prof. Anna",
