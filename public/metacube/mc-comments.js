@@ -6,10 +6,13 @@
   var RAW = "https://raw.githubusercontent.com/moongu97-creator/jeongraklee-site/main/public/metacube/comments.json";
   var NAVY = "#1F3864";
 
+  // 좌측 댓글 칼럼과 동일한 h2 헤더를 써서 두 칼럼의 제목·상단선이 정확히 같은 높이로 정렬됨
   var GUIDE =
-    '<aside style="flex:0 0 300px;min-width:260px;position:sticky;top:14px;align-self:flex-start;' + 'background:#f7f9fc;border:1px solid #d0d4da;' +
+    '<aside style="flex:0 0 300px;min-width:260px;position:sticky;top:14px;align-self:flex-start">' +
+    '<h2 style="font-size:16px;color:' + NAVY + ';border-bottom:2px solid ' + NAVY + ';' +
+    'padding-bottom:5px;margin:0 0 10px">이 창 사용법</h2>' +
+    '<div style="background:#f7f9fc;border:1px solid #d0d4da;' +
     'border-radius:8px;padding:14px 16px;font-size:12.5px;color:#2b3138;line-height:1.65">' +
-    '<div style="font-size:13.5px;font-weight:700;color:' + NAVY + ';margin-bottom:8px">이 창 사용법</div>' +
     '<div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #e2e7ef">' +
     '<span style="background:#2E4E7E;color:#fff;border-radius:3px;padding:1px 7px;font-size:11px;' +
     'font-weight:700">일반질문</span> ' +
@@ -26,13 +29,13 @@
     '<span style="color:#5c6470">질문 → 답변완료 · 설계변경 → 접수 → 검토중 → 반영 / 기각</span></div>' +
     '<div style="background:#fff6e8;border:1px solid #f0d5ae;border-radius:5px;padding:8px 10px;' +
     'font-size:11.5px;color:#7a5a20">자동 답변은 작업 세션이 켜져 있을 때 동작합니다. ' +
-    '응답이 없으면 잠시 후 다시 확인해 주세요 — 댓글은 사라지지 않고 그대로 남습니다.</div></aside>';
+    '응답이 없으면 잠시 후 다시 확인해 주세요 — 댓글은 사라지지 않고 그대로 남습니다.</div></div></aside>';
 
   host.innerHTML =
     '<div style="max-width:1240px;margin:18px auto 40px;padding:0 16px;font-family:\'Malgun Gothic\',sans-serif;' +
     'display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">' +
     '<div style="flex:1 1 600px;min-width:320px">' +
-    '<h2 style="font-size:16px;color:' + NAVY + ';border-bottom:2px solid ' + NAVY + ';padding-bottom:5px">' +
+    '<h2 style="font-size:16px;color:' + NAVY + ';border-bottom:2px solid ' + NAVY + ';padding-bottom:5px;margin:0 0 10px">' +
     "설계 리뷰 댓글 — " + (PAGE === "barrel" ? "경통(카메라)" : "전기체 3U") + "</h2>" +
     '<div id="mcc-list" style="margin:10px 0;font-size:13px;color:#333">불러오는 중…</div>' +
     '<div style="background:#f4f6fa;border:1px solid #d0d4da;border-radius:6px;padding:12px;margin-top:14px">' +
