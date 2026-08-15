@@ -36,7 +36,7 @@
     'display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">' +
     '<div style="flex:1 1 600px;min-width:320px">' +
     '<h2 style="font-size:16px;color:' + NAVY + ';border-bottom:2px solid ' + NAVY + ';padding-bottom:5px;margin:0 0 10px">' +
-    "설계 리뷰 댓글 — " + (PAGE === "barrel" ? "경통(카메라)" : "전기체 3U") + "</h2>" +
+    "설계 리뷰 댓글 — " + (PAGE === "barrel" ? "경통(카메라)" : PAGE === "thruster" ? "추력기(PCB 기화식)" : "전기체 3U") + "</h2>" +
     '<div id="mcc-list" style="margin:10px 0;font-size:13px;color:#333">불러오는 중…</div>' +
     '<div style="background:#f4f6fa;border:1px solid #d0d4da;border-radius:6px;padding:12px;margin-top:14px">' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">' +

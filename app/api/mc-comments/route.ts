@@ -9,7 +9,7 @@ const FILE = "public/metacube/comments.json";
 const BRANCH = "main";
 const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${encodeURIComponent(FILE)}`;
 
-const PAGES = new Set(["assembly", "barrel"]);
+const PAGES = new Set(["assembly", "barrel", "thruster"]);
 const TYPES = new Set(["일반질문", "설계변경"]);
 
 function gh(token?: string): Record<string, string> {
