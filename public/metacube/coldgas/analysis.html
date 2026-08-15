@@ -1,0 +1,123 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MetaCube 추진모듈 — 기화실 해석 결과</title><style>*{box-sizing:border-box}
+body{margin:0;background:#f4f6f9;color:#1a2029;font-family:'Malgun Gothic','Apple SD Gothic Neo',system-ui,sans-serif;font-size:15px;line-height:1.62}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:25px;margin:6px 0 4px;color:#1F3864;letter-spacing:-.02em}
+h1 .sub{font-size:14px;font-weight:400;color:#5c6470;margin-left:10px}
+h2{font-size:18px;margin:32px 0 8px;color:#1F3864;border-bottom:2px solid #dde3ec;padding-bottom:5px}
+h3{font-size:15px;margin:20px 0 6px;color:#2E4E7E}
+.lede{color:#3d4653;margin:0 0 16px;max-width:72ch}
+a{color:#2E4E7E}
+.note{color:#5c6470;font-size:13.5px;margin:4px 0 10px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13.5px;border:1px solid #dde3ec;margin:8px 0}
+th,td{padding:7px 11px;text-align:left;border-bottom:1px solid #e8ecf2;vertical-align:top}
+thead th{background:#1F3864;color:#fff;font-size:12.5px}
+tbody tr:last-child td{border-bottom:0}
+.pass{color:#256F52;font-weight:700}.warn{color:#9A6410;font-weight:700}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:10px 0}
+figure{margin:0;background:#fff;border:1px solid #dde3ec;padding:10px}
+figure img{width:100%;height:auto;display:block}
+figcaption{font-size:12px;color:#5c6470;margin-top:7px;line-height:1.5}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:#dde3ec;border:1px solid #dde3ec;margin:14px 0}
+.kpi>div{background:#fff;padding:10px 13px}
+.kpi .k{display:block;font-size:10.5px;letter-spacing:.09em;color:#5c6470;margin-bottom:2px}
+.kpi b{font-size:16px;font-variant-numeric:tabular-nums}
+.stamp{display:inline-block;border:2px solid #BC3F17;color:#BC3F17;font-size:11px;font-weight:700;
+  padding:2px 9px;border-radius:3px;letter-spacing:.08em;transform:rotate(-1.5deg)}
+ul{padding-left:19px;margin:6px 0}li{margin:5px 0;color:#3d4653}
+.foot{margin-top:30px;padding-top:14px;border-top:1px solid #dde3ec;font-size:12px;color:#5c6470}
+code{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;background:#eef1f6;padding:1px 4px;border-radius:3px}
+</style></head><body><div id="mcnav" style="position:sticky;top:0;z-index:9999;display:flex;gap:6px;align-items:center;background:#1F3864;padding:7px 14px;font-family:'Malgun Gothic',sans-serif"><span style="color:#fff;font-weight:700;font-size:13.5px;margin-right:8px">MetaCube</span><a href="/metacube/" style="color:#cfd8ea;border:1px solid #4a6293;border-radius:4px;padding:3px 12px;font-size:12.5px;text-decoration:none">전기체 3U CAD</a><a href="/metacube/barrel/" style="color:#cfd8ea;border:1px solid #4a6293;border-radius:4px;padding:3px 12px;font-size:12.5px;text-decoration:none">경통(카메라) 상세</a><a href="/metacube/thruster/" style="color:#cfd8ea;border:1px solid #4a6293;border-radius:4px;padding:3px 12px;font-size:12.5px;text-decoration:none">추력기 (PCB 기화식)</a><a href="/metacube/coldgas/" style="color:#1F3864;background:#fff;border-radius:4px;padding:3px 12px;font-size:12.5px;font-weight:700;text-decoration:none">추진모듈 (냉가스 R134a)</a><a href="/metacube/downloads.html" style="color:#cfd8ea;border:1px solid #4a6293;border-radius:4px;padding:3px 12px;font-size:12.5px;text-decoration:none">STEP 다운로드</a><span style="margin-left:auto;display:flex;gap:10px;align-items:center;font-size:11.5px;color:#cfd8ea"><span>전기체 <b style="color:#fff">v2.11</b></span><span>경통 <b style="color:#fff">v2.9</b></span><span style="color:#9fb0d0">배포 2026-08-16 00:39:32 KST</span></span></div><div style="background:#eef1f6;padding:5px 14px;border-bottom:1px solid #d0d4da"><span style="font-size:11.5px;color:#5c6470;font-weight:700;margin-right:6px">추진모듈</span><a href="/metacube/coldgas/" style="color:#2E4E7E;border:1px solid #c8d0dc;background:#fff;border-radius:4px;padding:2px 11px;font-size:12px;text-decoration:none">3D · 형상</a><a href="/metacube/coldgas/analysis.html" style="color:#fff;background:#2E4E7E;border-radius:4px;padding:2px 11px;font-size:12px;font-weight:700;text-decoration:none;margin-left:5px">해석</a></div><div class="wrap">
+<h1>기화실 해석 결과 <span class="sub">챔버 A′ 60 × 25 × 7.5 · 핀 φ2.5 × 31</span></h1>
+<p class="lede">액체 R134a가 기화실 안에서 <b>어디서 끓고 어디서 마르는지</b>, 그리고 그 과정이
+콜드스타트·버스트·슬러그·저잔량 같은 실제 운용에서 <b>어떻게 흔들리는지</b>를 계산한 결과입니다.</p>
+<p><span class="stamp">NOT CFD</span> <span class="note" style="display:inline">— 상용 CFD가 아니라
+<b>검증 가능한 노달 모델</b>입니다. 1D 유로 행진(94 슬라이스) + 2D 바닥 FDM(1 mm 셀)이고,
+쓰인 상관식과 유효범위를 아래에 전부 밝혔습니다.</span></p>
+
+<div class="kpi">
+  <div><span class="k">출구 과열도 (명목)</span><b>19.21 K</b></div>
+  <div><span class="k">출구 과열도 (최악)</span><b>14.81 K</b></div>
+  <div><span class="k">건조점</span><b>8.0 → 36.7 mm</b></div>
+  <div><span class="k">CHF 마진 (1g)</span><b>4.0×</b></div>
+  <div><span class="k">최냉 핀</span><b>Tsat +13.4 K</b></div>
+  <div><span class="k">압력강하</span><b>0.46 Pa</b></div>
+</div>
+
+<h2>쓴 상관식과 그 유효범위</h2>
+<table><thead><tr><th>항목</th><th>상관식</th><th>출처</th><th>유효범위 / 본 설계</th></tr></thead><tbody>
+<tr><td>습윤 열전달</td><td>Cooper (1984) 풀비등</td><td>Cooper, <i>Adv. Heat Transfer</i> 16</td><td>0.001 &lt; p_r &lt; 0.9 / <b class="num">0.052</b></td></tr>
+<tr><td>건조 후 열전달</td><td>Žukauskas 지그재그 뱅크</td><td>Žukauskas, <i>Adv. Heat Transfer</i> 8 (1972)</td><td>40 &lt; Re &lt; 1000 / <b class="num">Re ≈ 250</b></td></tr>
+<tr><td>핀 효율</td><td>η = tanh(mL)/(mL), 단열 팁</td><td>표준</td><td>— (천장 접촉은 <b>크레딧 안 함</b>)</td></tr>
+<tr><td>CHF</td><td>Zuber (1959)</td><td>Zuber, UCLA</td><td><b>1g만 예측</b> · μg는 바운드로만</td></tr>
+<tr><td>물성</td><td>CoolProp HEOS R134a</td><td>CoolProp 7.2.0</td><td>—</td></tr>
+</tbody></table>
+
+<h2>정상 해석 — 7항 판정</h2>
+<table><thead><tr><th>#</th><th>항목</th><th>판정</th><th>핵심 수치</th></tr></thead><tbody>
+<tr><td>1</td><td>건조점 · 과열 행진</td><td class="pass">PASS</td><td>SH 19.21 / 14.81 K ≥ 10 · <b>자기안정</b>(h/3에서 건조점 4.6배 연장)</td></tr>
+<tr><td>2</td><td>국소 CHF</td><td class="pass">PASS (1g 4.0×)</td><td>피크 78.6 kW/m² — 인렛 8 mm 집중. μg는 바운드로만</td></tr>
+<tr><td>3</td><td>바닥 · 핀 2D 전도</td><td class="pass">PASS</td><td>최냉 핀 <b>Tsat +13.4 K</b> · 필름 가장자리 낙차 0.09 K</td></tr>
+<tr><td>4</td><td>과열 면적 예산</td><td class="pass">PASS</td><td>최악 활주로 23.0 mm (38 %) · SH 마진 48 %</td></tr>
+<tr><td>5</td><td>핀뱅크 압력강하</td><td class="pass">PASS</td><td>0.46 Pa vs 허용 25,000 Pa</td></tr>
+<tr><td>6</td><td>출구 기체온 센서 대표성</td><td class="warn">보강필요</td><td>벽 가중 99.9 % · 최악 바이어스 +4.28 K → <b>침지형 스템 센서</b>로 변경</td></tr>
+<tr><td>7</td><td>콜드스타트 90 s 프리히트</td><td class="pass">PASS</td><td>최저 +11.76 °C &gt; +5.0 · 마진 +6.76 K</td></tr>
+</tbody></table>
+
+<h3>⭐ 자기안정 — 이 설계의 핵심 성질</h3>
+<p class="note">비등 열전달이 1/3로 나빠지면 어떻게 될까요? <b>습윤 구간이 스스로 8.0 → 36.7 mm로 늘어나</b>
+같은 잠열을 소화합니다. 그래서 최악 조건에서도 출구 과열도가 14.81 K로 요구(10 K)를 넘습니다.
+설계가 열전달 계수 추정에 민감하지 않다는 뜻입니다.</p>
+
+<h2>과도 해석 — 4시나리오</h2>
+<p class="note">정상 상태가 통과해도 <b>실제 운용은 과도</b>입니다. 정본 정상해를 시간축으로 확장해
+매 실행마다 정상해와의 정합을 게이트로 검사합니다(Δ 0.0000).</p>
+
+<h3>① 콜드스타트 — 90 s 프리히트 규칙은 타당한가</h3>
+<table><thead><tr><th>소킹 온도</th><th>+5 °C 도달</th><th>90 s 블록온</th><th>90 s 규칙 여유</th></tr></thead><tbody>
+<tr><td>0 °C (벤치 T1)</td><td class="num">11.0 s</td><td class="num">+12.01 °C</td><td class="num pass">8.18×</td></tr>
+<tr><td>−20 °C</td><td class="num">31.3 s</td><td class="num">+11.75 °C</td><td class="num pass">2.88×</td></tr>
+<tr><td>−40.4 °C (콜드 부유 바운드)</td><td class="num">41.5 s</td><td class="num">+11.48 °C</td><td class="num pass">2.17×</td></tr>
+</tbody></table>
+<p class="note"><b>규칙의 출처가 낡았던 것도 확인됐습니다.</b> 90 s는 v6 블록 열용량(233 J/K) 기준이었고,
+현행 CAD 실측은 <b>78.98 J/K</b>라 τ가 41 → <b>20.65 s</b>로 절반이 됐습니다. 최한랭에서도 41.5 s면 충분합니다.</p>
+<div class="figs"><figure><img src="fig/s1_coldstart.gif" alt="콜드스타트 과도 — 블록 승온과 SH 도달" loading="lazy"><figcaption>콜드스타트 과도 — 블록 승온과 SH 도달</figcaption></figure><figure><img src="fig/s1_preheat_rule.png" alt="90 s 프리히트 규칙의 근거 — 열용량 재실측으로 τ 41 → 20.65 s" loading="lazy"><figcaption>90 s 프리히트 규칙의 근거 — 열용량 재실측으로 τ 41 → 20.65 s</figcaption></figure></div>
+
+<h3>② 버스트 — 자기안정 확인</h3>
+<div class="figs"><figure><img src="fig/s2_selfstab.gif" alt="버스트 중 자기안정 — 습윤 구간이 스스로 늘어난다" loading="lazy"><figcaption>버스트 중 자기안정 — 습윤 구간이 스스로 늘어난다</figcaption></figure><figure><img src="fig/s2_burst_transient.png" alt="버스트 과도 — 플레넘 압력과 출구 과열도" loading="lazy"><figcaption>버스트 과도 — 플레넘 압력과 출구 과열도</figcaption></figure></div>
+
+<h3>③ 슬러그 — PT는 온도계가 아니라 기화 완결도계</h3>
+<p class="note">액체 덩어리가 들어오면 <b>압력 기울기의 부호가 뒤집힙니다</b> — 정상 +0.86 bar/s vs 슬러그 −0.11~−1.57.
+그래서 <b>21~53 ms</b>에 분리됩니다. 반면 서미스터 체인(0.65 s)은 어떤 도달 시계에도 미달이라
+1차 센서 자격이 없습니다.</p>
+<div class="figs"><figure><img src="fig/s3_slug.gif" alt="슬러그 유입 과도" loading="lazy"><figcaption>슬러그 유입 과도</figcaption></figure><figure><img src="fig/s3_detection.png" alt="검출 — 압력 기울기 부호 반전으로 21~53 ms 분리" loading="lazy"><figcaption>검출 — 압력 기울기 부호 반전으로 21~53 ms 분리</figcaption></figure><figure><img src="fig/s3_overfeed.png" alt="과급 — 순시 급액이 비등 능력을 넘는 구간" loading="lazy"><figcaption>과급 — 순시 급액이 비등 능력을 넘는 구간</figcaption></figure></div>
+
+<h3>④ 저잔량 — 액체에서 기체로 넘어갈 때</h3>
+<p class="note">잔량이 마르면 급액이 액체에서 기체로 바뀝니다. <b>기체 인출 시 챔버 열부하는 0 W</b>가 되고,
+추력은 오리피스가 정합니다(φ243에서 30 mN 유지).</p>
+<div class="figs"><figure><img src="fig/s4_phaseflip.gif" alt="저잔량 상 전환 — 액체에서 기체로" loading="lazy"><figcaption>저잔량 상 전환 — 액체에서 기체로</figcaption></figure><figure><img src="fig/s4_gas_superheat.png" alt="기체 인출 시 과열도 — 챔버 열부하 0 W" loading="lazy"><figcaption>기체 인출 시 과열도 — 챔버 열부하 0 W</figcaption></figure></div>
+
+<h2>3D 검산 계획 — COMSOL 이관 목록</h2>
+<p class="note">위 결과는 1D+2D 뭉침 모델입니다. 아래는 <b>그 뭉침이 틀릴 수 있는 지점</b>을 3D로 확인하는 목록이고,
+합격 판정 기준까지 정해 두었습니다.</p>
+<table><thead><tr><th>#</th><th>검산 대상</th><th>모듈</th><th>합격 판정</th></tr></thead><tbody>
+<tr><td>C1</td><td>3D 전도 vs 1D+2D 뭉침 — 최냉 핀 · 바닥 맵</td><td>Heat Transfer in Solids (정상)</td><td>최냉 핀 +4.61 °C ± 1 K · 필름 가장자리 낙차 ≤ 0.3 K</td></tr>
+<tr><td>C2</td><td>기체 구간 공액 열전달 — Žukauskas 외삽</td><td>Laminar Flow + HT (공액)</td><td>Nu 편차 ≤ 30 %</td></tr>
+<tr><td>C3</td><td>콜드스타트 3D 과도 — 90 s 맵</td><td>HT in Solids (과도)</td><td>t = 90 s 최저온 +11.76 °C ± 1.5 K</td></tr>
+<tr><td>C4</td><td>센서 블라인드홀 공액 — 스템 재설계</td><td>Solids + 등가 h (과도)</td><td>응답 τ ≤ 0.5 s 달성 확인</td></tr>
+<tr><td>C5</td><td>블록–탱크 패드 경로 3D — 분포 G 가정</td><td>HT in Solids (정상)</td><td>패드 접촉 2,931.7 mm² 기준 G 3.824 W/K 재현</td></tr>
+</tbody></table>
+
+<h2>정직한 한계</h2>
+<ul>
+<li><b>μg CHF는 예측이 아니라 바운드입니다.</b> Bond &lt; 1(모세관 길이 1 mm ≫ 저중력 기포 스케일)에서
+Zuber의 수력학적 메커니즘 자체가 무효라, 1e-2 g에서 1.3× · 1e-4 g에서 0.4×는 <b>참고값</b>입니다. E3 영상이 판정자입니다.</li>
+<li><b>핀 끝 천장 접촉을 성능으로 안 셌습니다.</b> 단열 팁(L = 7.5) 기준이라, 실제 접촉이 되면 그만큼 상승 여력입니다.</li>
+<li><b>배관 예열이 모델에 없습니다.</b> 입구 건도는 순수 등엔탈피 플래시 값이고, 오리피스↔챔버 배관에서
+받는 열(총 부하의 33~152 % 추정)은 계상돼 있지 않습니다 — 실물이 모델보다 유리할 가능성이 큽니다.</li>
+<li>본 페이지 수치는 <b>플레넘 2.10 bar · 탱크 +10.6 °C</b> 시절 기준이 섞여 있습니다. 현행 운전점은 setpoint +13.92 °C입니다.</li>
+</ul>
+
+<p class="foot">정본 = <code>model/chamber_analysis.py</code>(1D+2D) · <code>model/transient_viz/</code>(과도 4종) ·
+<code>design/v8_chamber/trade_study.md</code>(트레이드 14게이트). 그림 28장.</p>
+</div></body></html>
