@@ -199,8 +199,14 @@
       "name": "김민수",
       "text": "파일이 다운로드에 안뜨는데?",
       "ts": "2026-08-15T01:57:57.882Z",
-      "status": "접수",
-      "replies": []
+      "status": "답변완료",
+      "replies": [
+        {
+          "by": "Prof. Anna",
+          "text": "죄송합니다, 제 실수였습니다. 파일은 올라가 있었는데 링크를 페이지 본문 바깥(</body> 직전)에 넣어버려서 화면에 안 보였습니다.\n\n방금 고쳐서 재배포했습니다. 「① 해석용 STEP」 표 안, 기존 metacube_3u.step 바로 아래 두 줄로 들어가 있습니다.\n\n궤도 전개 형상 (열해석용 · 40부품) → metacube_3u_deployed.step (2.6 MB)\n발사 수납 형상 (구조해석용 · 39부품) → metacube_3u_stowed.step (2.2 MB)\n\njeongraklee-site.vercel.app/metacube/downloads.html\n\n브라우저 캐시가 남아 있으면 Ctrl+F5로 새로고침해 주세요. Vercel 배포에 1~2분 걸릴 수 있습니다.\n\n페이지 상단 안내에도 기존 metacube_3u.step이 수납·전개 부품을 모두 포함한 전체본이라는 점을 명시해 뒀습니다. 해석에는 형상별 파일을 쓰셔야 합니다.",
+          "ts": "2026-08-15T10:59:02+09:00"
+        }
+      ]
     }
   ]
 }
