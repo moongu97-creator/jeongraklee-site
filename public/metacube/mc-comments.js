@@ -23,8 +23,8 @@
     '<span style="background:#d98040;color:#fff;border-radius:3px;padding:1px 7px;font-size:11px;' +
     'font-weight:700">설계변경 제안</span> ' +
     '<div style="margin-top:6px">바꿔야 할 부분이 있으면 유형을 <b>설계변경 제안</b>으로 바꿔 남겨주세요. ' +
-    '먼저 정본과 공학 근거를 검토해 <b>검토중</b>으로 답변하며, Boss 승인 후에만 ' +
-    'CAD·수치·STEP·BOM·페이지에 반영합니다.<br><span style="color:#5c6470">예) 벽 더 얇게 / 이 기둥 빼줘 / 베인 각도 바꿔줘</span></div></div>' +
+    '전용 설계 Brain이 정본·공학 근거·검증 결과로 독립 판단합니다. 근거와 회귀검증이 닫히면 ' +
+    'CAD·수치·STEP·BOM·페이지까지 자율 반영하고, 시험·제조사·ICD 확인이 남으면 <b>검토중</b>으로 관리합니다.<br><span style="color:#5c6470">예) 벽 더 얇게 / 이 기둥 빼줘 / 베인 각도 바꿔줘</span></div></div>' +
     '<div style="margin-bottom:10px"><b>상태 표시</b><br>' +
     '<span style="color:#5c6470">질문 → 답변완료 · 설계변경 → 접수 → 검토중 → 반영 / 기각</span></div>' +
     '<div style="background:#fff6e8;border:1px solid #f0d5ae;border-radius:5px;padding:8px 10px;' +
