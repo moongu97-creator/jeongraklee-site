@@ -9,7 +9,7 @@ const FILE = "public/metacube/comments.json";
 const BRANCH = "main";
 const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${encodeURIComponent(FILE)}`;
 
-const PAGES = new Set(["assembly", "barrel", "thruster"]);
+const PAGES = new Set(["assembly", "barrel", "thruster", "coldgas"]);
 const TYPES = new Set(["일반질문", "설계변경"]);
 
 function gh(token?: string): Record<string, string> {
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
       if (r.status === 409) continue; // sha 충돌 → 재시도
       if (!r.ok) throw new Error(`github write ${r.status}`);
       return Response.json({ ok: true, entry });
-    } catch (e) {
+    } catch {
       if (attempt === 1) {
         return Response.json({ error: "write_failed" }, { status: 502 });
       }

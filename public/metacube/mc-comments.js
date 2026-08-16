@@ -1,4 +1,4 @@
-// MetaCube 설계 리뷰 댓글 위젯 — <div id="mccmt" data-page="barrel|assembly"></div> 아래에 로드
+// MetaCube 설계 리뷰 댓글 위젯 — data-page="assembly|barrel|thruster|coldgas"
 (function () {
   var host = document.getElementById("mccmt");
   if (!host) return;
@@ -17,14 +17,14 @@
     '<span style="background:#2E4E7E;color:#fff;border-radius:3px;padding:1px 7px;font-size:11px;' +
     'font-weight:700">일반질문</span> ' +
     '<div style="margin-top:6px">설계·해석·부품 무엇이든 물어보세요. ' +
-    '<b>보통 1분 이내</b>(감지 15초 + 답변 작성)에 답글이 달립니다.<br>' +
+    '<b>보통 5분 이내 감지</b> 후 근거를 확인해 답글을 작성합니다.<br>' +
     '<span style="color:#5c6470">예) 소재 물성이 뭐야 / CMOS 발열 얼마야 / 이 치수 왜 이렇게 정했어</span></div></div>' +
     '<div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #e2e7ef">' +
     '<span style="background:#d98040;color:#fff;border-radius:3px;padding:1px 7px;font-size:11px;' +
     'font-weight:700">설계변경 제안</span> ' +
     '<div style="margin-top:6px">바꿔야 할 부분이 있으면 유형을 <b>설계변경 제안</b>으로 바꿔 남겨주세요. ' +
-    'CAD 수정 → 간섭·미광 검증 → STEP·BOM·페이지까지 <b>자동 반영</b>됩니다. ' +
-    '(보통 <b>5~10분</b>)<br><span style="color:#5c6470">예) 벽 더 얇게 / 이 기둥 빼줘 / 베인 각도 바꿔줘</span></div></div>' +
+    '먼저 정본과 공학 근거를 검토해 <b>검토중</b>으로 답변하며, Boss 승인 후에만 ' +
+    'CAD·수치·STEP·BOM·페이지에 반영합니다.<br><span style="color:#5c6470">예) 벽 더 얇게 / 이 기둥 빼줘 / 베인 각도 바꿔줘</span></div></div>' +
     '<div style="margin-bottom:10px"><b>상태 표시</b><br>' +
     '<span style="color:#5c6470">질문 → 답변완료 · 설계변경 → 접수 → 검토중 → 반영 / 기각</span></div>' +
     '<div style="background:#fff6e8;border:1px solid #f0d5ae;border-radius:5px;padding:8px 10px;' +
@@ -36,7 +36,12 @@
     'display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">' +
     '<div style="flex:1 1 600px;min-width:320px">' +
     '<h2 style="font-size:16px;color:' + NAVY + ';border-bottom:2px solid ' + NAVY + ';padding-bottom:5px;margin:0 0 10px">' +
-    "설계 리뷰 댓글 — " + (PAGE === "barrel" ? "경통(카메라)" : PAGE === "thruster" ? "추력기(PCB 기화식)" : "전기체 3U") + "</h2>" +
+    "설계 리뷰 댓글 — " + ({
+      barrel: "경통(카메라)",
+      thruster: "추력기(PCB 기화식)",
+      coldgas: "냉가스 추진모듈(R134a)",
+      assembly: "전기체 3U"
+    }[PAGE] || "전기체 3U") + "</h2>" +
     '<div id="mcc-list" style="margin:10px 0;font-size:13px;color:#333">불러오는 중…</div>' +
     '<div style="background:#f4f6fa;border:1px solid #d0d4da;border-radius:6px;padding:12px;margin-top:14px">' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">' +
@@ -65,7 +70,7 @@
         timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit",
         hour: "2-digit", minute: "2-digit", hour12: false
       }).format(d).replace(/\.\s*/g, "-").replace(/-$/, "").replace(/-(\d{2}:)/, " $1");
-    } catch (e) {
+    } catch {
       return String(ts).slice(0, 16).replace("T", " ");
     }
   }
