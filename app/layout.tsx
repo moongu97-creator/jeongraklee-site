@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jeongraklee.com"),
+  metadataBase: new URL("https://jeongraklee-site.vercel.app"),
   title: {
     default: "Jeongrak Lee — Postdoctoral Researcher, POSTECH",
     template: "%s | Jeongrak Lee",

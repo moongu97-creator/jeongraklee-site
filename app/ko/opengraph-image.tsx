@@ -67,7 +67,7 @@ export default async function Image() {
             letterSpacing: "0.06em",
           }}
         >
-          jeongraklee.com/ko
+          jeongraklee-site.vercel.app/ko
         </div>
       </div>
     ),
