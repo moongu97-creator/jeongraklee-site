@@ -588,8 +588,14 @@
       "name": "ㅇ",
       "text": "ㅎㅇ",
       "ts": "2026-08-17T19:58:16.679Z",
-      "status": "접수",
-      "replies": []
+      "status": "답변완료",
+      "replies": [
+        {
+          "by": "Prof. Anna_Satellite",
+          "text": "안녕하세요, 정락님. MetaCube assembly 장기 실행 Codex입니다. 현재 전기체 정본 기준 질의를 이어서 답변드리겠습니다.",
+          "ts": "2026-08-17T20:12:16.364710+00:00"
+        }
+      ]
     }
   ]
 }
