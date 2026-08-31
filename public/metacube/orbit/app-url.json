@@ -1,0 +1,1 @@
+{"url": "", "note": "Mac mini 에서 궤도 툴 서버(ui/launch.py)를 Tailscale Funnel 로 공개한 뒤 그 https URL 을 url 에 넣고 push 하면 /metacube/orbit/ 페이지가 자동 연결됩니다."}

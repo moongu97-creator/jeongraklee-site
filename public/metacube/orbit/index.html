@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>궤도 전파·해석 툴 — MetaCube</title>
+<style>
+body{margin:0;font-family:'Malgun Gothic','Segoe UI',sans-serif;background:#f4f6fa;color:#1c2430}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 22px 60px}h1{font-size:22px;color:#1F3864;margin:14px 0 4px}h2{font-size:17px;color:#1F3864;border-bottom:2px solid #cfd8ea;padding-bottom:4px;margin:26px 0 10px}
+.sub{color:#5c6470;font-size:13px;margin:0 0 10px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:12px 0}.card{background:#fff;border:1px solid #d6dde8;border-radius:6px;padding:10px 12px;font-size:13px}.card b{color:#1F3864}
+table{border-collapse:collapse;font-size:12.5px;background:#fff;width:100%}th,td{border:1px solid #d6dde8;padding:5px 8px;text-align:left;vertical-align:top}th{background:#e9eef6;color:#1F3864}
+.note{background:#fff6e8;border-left:4px solid #d98040;padding:9px 12px;font-size:13px;margin:12px 0;border-radius:0 4px 4px 0}.ok{background:#eef7ee;border-left:4px solid #3b8a4a;padding:9px 12px;font-size:13px;margin:12px 0;border-radius:0 4px 4px 0}
+.btn{display:inline-block;padding:9px 18px;background:#2E4E7E;color:#fff;border-radius:5px;font-weight:700;text-decoration:none;font-size:14px}.btn.off{background:#9aa5b8;pointer-events:none}
+iframe.app{width:100%;height:900px;border:1px solid #cfd8ea;border-radius:6px;background:#fff}
+ul{font-size:13.5px}li{margin:3px 0}code{background:#e9eef6;padding:1px 5px;border-radius:3px;font-size:12.5px}
+</style></head><body>
+<div id="mcnav" style="position:sticky;top:0;z-index:9999;display:flex;gap:6px;align-items:center;background:#1F3864;padding:7px 14px;font-family:'Malgun Gothic',sans-serif"><span style="color:#fff;font-weight:700;font-size:13.5px;margin-right:8px">MetaCube</span><a href="/metacube/" style="color:#cfd8ea;border:1px solid #4a6293;border-radius:4px;padding:3px 12px;font-size:12.5px;text-decoration:none">전기체 3U CAD</a><a href="/metacube/barrel/" style="color:#cfd8ea;border:1px solid #4a6293;border-radius:4px;padding:3px 12px;font-size:12.5px;text-decoration:none">경통(카메라) 상세</a><a href="/metacube/thruster/" style="color:#cfd8ea;border:1px solid #4a6293;border-radius:4px;padding:3px 12px;font-size:12.5px;text-decoration:none">추력기 (PCB 기화식)</a><a href="/metacube/coldgas/" style="color:#cfd8ea;border:1px solid #4a6293;border-radius:4px;padding:3px 12px;font-size:12.5px;text-decoration:none">추진모듈 (냉가스 R134a)</a><a href="/metacube/orbit/" style="color:#1F3864;background:#fff;border-radius:4px;padding:3px 12px;font-size:12.5px;font-weight:700;text-decoration:none">궤도 툴</a><a href="/metacube/downloads.html" style="color:#cfd8ea;border:1px solid #4a6293;border-radius:4px;padding:3px 12px;font-size:12.5px;text-decoration:none">STEP 다운로드</a><span style="margin-left:auto;display:flex;gap:10px;align-items:center;font-size:11.5px;color:#cfd8ea"><span>궤도 툴 <b style="color:#fff">v1</b></span><span style="color:#9fb0d0">페이지 2026-08-31</span></span></div>
+<div class="wrap">
+<h1>궤도 전파·해석 툴</h1>
+<p class="sub">Orekit 13 수치 전파 · 중력장 EIGEN-6S(≤70×70) · 대기 NRLMSIS 2.1 / NRLMSISE-00 / DTM2000 · 태양복사압 · 태양·달 3체 · 고체조석 · 상대론 · 임펄스 기동 · 식(蝕). 검증: NASA GMAT ±1.3%, King-Hele 해석해.</p>
+
+<div id="status" class="note">앱 서버 연결 상태를 확인하는 중…</div>
+<p><a id="open" class="btn off" href="#" target="_blank" rel="noopener">앱 열기 (새 탭)</a> &nbsp; <span id="urltxt" style="font-size:12.5px;color:#5c6470"></span></p>
+<div id="embed"></div>
+
+<h2>무엇을 계산하나</h2>
+<div class="cards">
+<div class="card"><b>궤도 정의 4가지</b><br>태양동기(고도만) · 케플러 6요소 · TLE(SGP4 초기화) · 직교좌표(EME2000)</div>
+<div class="card"><b>힘 모델</b><br>중력장 차수 선택, 항력(3개 대기 모델·우주기상 상수/실지수), SRP, 태양·달, 고체조석, 상대론</div>
+<div class="card"><b>기동</b><br>임펄스 ΔV 표(진행·반경·법선, LVLH) — 호만 전이·고도 유지 시나리오, 추진제 소모(로켓식)</div>
+<div class="card"><b>출력</b><br>3D 궤적(재생 애니메이션·HTML 저장) · 지상궤적 · 궤도요소 이력 · 고도/수명 · 밀도·항력·식 · 보고서 · CSV/JSON</div>
+</div>
+
+<h2>사용법</h2>
+<ul>
+<li><b>프리셋</b>을 고르면 모든 입력이 채워집니다(SSO 250/500 km · ISS · TLE 예시 · 호만 기동 · Molniya · GEO). 이후 <b>★ 표시 항목</b>(시각·궤도·질량·면적·C_D·기간·우주기상)만 조정하면 됩니다.</li>
+<li><b>⚙ 고급 설정</b>은 기본값이 대부분의 해석에 적합하도록 맞춰져 있습니다. 필요할 때만 조정해 주세요. 모든 입력 칸에 의미·전형값·출처 툴팁이 있습니다.</li>
+<li><b>▶ 전파 실행</b>을 눌러야 계산이 시작됩니다(값을 바꿔도 자동 계산되지 않음). 계산은 서버에서 백그라운드로 진행되어 페이지를 새로 고쳐도 이어지며, 250 km 30일 ≈ 1~2분, 1년 ≈ 수십 분입니다.</li>
+<li>결과의 <b>3D 궤적</b>은 처음 2궤도(촘촘한 샘플), <b>지상궤적</b>은 처음 1일이 기본이며 슬라이더로 늘리거나 전체 기간으로 바꿀 수 있습니다.</li>
+</ul>
+
+<h2>유효 범위와 한계</h2>
+<table><tr><th>고도</th><th>가능</th><th>주의</th></tr>
+<tr><td>130~150 km</td><td>전파 가능</td><td>연속류·공력가열 시작 — 재진입 물리(가열·파괴)는 모델 밖, 기본 중단 고도 130 km</td></tr>
+<tr><td>150~1,000 km</td><td>항력·감쇠·수명 해석 전부 유효</td><td>NRLMSIS 2.1 유효 범위. 밀도 모델 불확실성 10~30%가 지배 오차</td></tr>
+<tr><td>1,000 km ~ GEO</td><td>중력장·SRP·3체 전파 유효</td><td>항력 무시 가능, 적분 최대 스텝을 주기에 맞게(프리셋 반영)</td></tr>
+<tr><td>SSO 자동 경사각</td><td>≤ ~5,900 km</td><td>그 위는 케플러 모드로 직접 지정</td></tr></table>
+<p style="font-size:13px;margin-top:8px">포함되지 않은 것: 자세 의존 항력(패널법), 해양조석, 유한 연소 기동, 지상국 가시성·커버리지, 3D 지구 텍스처. 정확도는 프로그램이 아니라 힘 모델·입력(대기 밀도·C_D)이 정하며, 이 층에서 Orekit·GMAT·STK 는 같은 급입니다.</p>
+
+<h2>계산 모듈과 출처</h2>
+<table><tr><th>요소</th><th>모듈·데이터</th><th>출처</th></tr>
+<tr><td>전파 엔진</td><td>Orekit 13.1.7 (orekit-jpype)</td><td>CS GROUP 오픈소스; CNES 차세대 비행역학 기반, EUMETSAT·ESA 운용 통합</td></tr>
+<tr><td>적분기</td><td>Dormand–Prince 8(5,3) 적응 스텝</td><td>Hipparchus</td></tr>
+<tr><td>중력장</td><td>Holmes–Featherstone + EIGEN-6S (≤70×70)</td><td>GFZ Potsdam</td></tr>
+<tr><td>대기</td><td>NRLMSIS 2.1 (pymsis) · NRLMSISE-00 · DTM2000</td><td>NRL (Emmert 2022) · Picone 2002 · CNES</td></tr>
+<tr><td>우주기상</td><td>CelesTrak SW-All / CSSI</td><td>CelesTrak</td></tr>
+<tr><td>지구 자세·시각·천체력</td><td>IERS finals2000A EOP · 윤초 · JPL DE-440</td><td>IERS · JPL</td></tr>
+<tr><td>검증</td><td>NASA GMAT R2026a 5일 감쇠율 ±1.3% · King-Hele 해석해 1.05 · 식 연중 해석해 일치</td><td>—</td></tr></table>
+
+<div class="ok" style="margin-top:20px">문의·요청은 MetaCube 페이지 댓글란 또는 이메일로 남겨 주세요. 서버 운영: Mac mini(상시), 코드: vleo-abep-design 저장소 <code>ui/</code>.</div>
+</div>
+<script>
+(async function(){
+  const st=document.getElementById('status'),btn=document.getElementById('open'),emb=document.getElementById('embed'),ut=document.getElementById('urltxt');
+  let url='';
+  try{const r=await fetch('/metacube/orbit/app-url.json',{cache:'no-store'});if(r.ok){url=((await r.json()).url||'').trim();}}catch(e){}
+  if(!url){st.className='note';st.textContent='앱 서버가 아직 연결되지 않았습니다 — Mac mini 배포 후 자동으로 연결됩니다.';return;}
+  btn.href=url;btn.classList.remove('off');ut.textContent=url;
+  st.className='ok';st.textContent='앱 서버 연결됨 — 아래에 바로 표시됩니다. 화면이 좁으면 "앱 열기 (새 탭)" 을 이용해 주세요.';
+  const f=document.createElement('iframe');f.className='app';f.src=url+(url.includes('?')?'&':'?')+'embed=true';f.loading='lazy';emb.appendChild(f);
+})();
+</script>
+</body></html>
